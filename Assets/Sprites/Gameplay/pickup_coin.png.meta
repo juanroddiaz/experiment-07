@@ -1,0 +1,820 @@
+fileFormatVersion: 2
+guid: 3abf3e66bcce21d4ab67ffefe1bcc3d5
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3433284098071889216
+    second: pickup_coin_0
+  - first:
+      213: -7220006669667966304
+    second: pickup_coin_1
+  - first:
+      213: 866161371655847404
+    second: pickup_coin_2
+  - first:
+      213: 6373893870712126807
+    second: pickup_coin_3
+  - first:
+      213: -640066386507413514
+    second: pickup_coin_4
+  - first:
+      213: 2323939225981126513
+    second: pickup_coin_5
+  - first:
+      213: 7153946728849999884
+    second: pickup_coin_6
+  - first:
+      213: 1331121607104604086
+    second: pickup_coin_7
+  - first:
+      213: 3588132487822153290
+    second: pickup_coin_8
+  - first:
+      213: 7447092260370511124
+    second: pickup_coin_9
+  - first:
+      213: 5234424967655960444
+    second: pickup_coin_10
+  - first:
+      213: 5767377191223330080
+    second: pickup_coin_11
+  - first:
+      213: -100493216667405453
+    second: pickup_coin_12
+  - first:
+      213: 8331727005898014276
+    second: pickup_coin_13
+  - first:
+      213: -939696149135599738
+    second: pickup_coin_14
+  - first:
+      213: -4058861698582787861
+    second: pickup_coin_15
+  - first:
+      213: 1611604446291890820
+    second: pickup_coin_16
+  - first:
+      213: -787192029112310730
+    second: pickup_coin_17
+  - first:
+      213: 6918920185964228713
+    second: pickup_coin_18
+  - first:
+      213: 5109369638371427655
+    second: pickup_coin_19
+  - first:
+      213: -7157088747930145720
+    second: pickup_coin_20
+  - first:
+      213: -426825636002354680
+    second: pickup_coin_21
+  - first:
+      213: -4454756533545348127
+    second: pickup_coin_22
+  - first:
+      213: -6412127694123261453
+    second: pickup_coin_23
+  - first:
+      213: -8217100885563999093
+    second: pickup_coin_24
+  - first:
+      213: 186517140401030360
+    second: pickup_coin_25
+  - first:
+      213: -1235010541208333679
+    second: pickup_coin_26
+  - first:
+      213: 4619101069263727383
+    second: pickup_coin_27
+  - first:
+      213: -6683024195917912319
+    second: pickup_coin_28
+  - first:
+      213: 1028553498987189853
+    second: pickup_coin_29
+  - first:
+      213: -5279986911067026216
+    second: pickup_coin_30
+  - first:
+      213: -5350968120143020907
+    second: pickup_coin_31
+  - first:
+      213: 8281409631132634383
+    second: pickup_coin_32
+  - first:
+      213: 7866509213143854915
+    second: pickup_coin_33
+  - first:
+      213: 4346110201975758974
+    second: pickup_coin_34
+  - first:
+      213: -5899005596280209269
+    second: pickup_coin_35
+  - first:
+      213: 9011775188638861809
+    second: pickup_coin_36
+  - first:
+      213: -6769234687208872515
+    second: pickup_coin_37
+  - first:
+      213: 7559785742705079000
+    second: pickup_coin_38
+  - first:
+      213: -667688516019161169
+    second: pickup_coin_39
+  - first:
+      213: -2551659373749853178
+    second: pickup_coin_40
+  - first:
+      213: -346337058089859713
+    second: pickup_coin_41
+  - first:
+      213: 926354837433780611
+    second: pickup_coin_42
+  - first:
+      213: -1989491395537502750
+    second: pickup_coin_43
+  - first:
+      213: -5524221757279005232
+    second: pickup_coin_44
+  - first:
+      213: -2759187636711454900
+    second: pickup_coin_45
+  - first:
+      213: -1092490159832324865
+    second: pickup_coin_46
+  - first:
+      213: -2633586291170783234
+    second: pickup_coin_47
+  - first:
+      213: 1398521623539801356
+    second: pickup_coin_48
+  - first:
+      213: -8873502156840142340
+    second: pickup_coin_49
+  - first:
+      213: -2139182664203775140
+    second: pickup_coin_50
+  - first:
+      213: -4459788884645176579
+    second: pickup_coin_51
+  - first:
+      213: -7923136410036099292
+    second: pickup_coin_52
+  - first:
+      213: 8245122903335948618
+    second: pickup_coin_53
+  - first:
+      213: -254144362806575845
+    second: pickup_coin_54
+  - first:
+      213: 3920538070123223386
+    second: pickup_coin_55
+  - first:
+      213: -6476843756993970798
+    second: pickup_coin_56
+  - first:
+      213: 2735497147448148791
+    second: pickup_coin_57
+  - first:
+      213: 8230058432724113543
+    second: pickup_coin_58
+  - first:
+      213: 5564642178748847260
+    second: pickup_coin_59
+  - first:
+      213: 7657448281673362474
+    second: pickup_coin_60
+  - first:
+      213: 5483947658043418805
+    second: pickup_coin_61
+  - first:
+      213: 4393828392655496813
+    second: pickup_coin_62
+  - first:
+      213: 8053772297482616836
+    second: pickup_coin_63
+  - first:
+      213: -4132442119403106866
+    second: pickup_coin_64
+  - first:
+      213: -8876544186938516858
+    second: pickup_coin_65
+  - first:
+      213: 3390701453456691177
+    second: pickup_coin_66
+  - first:
+      213: -6423545076926153347
+    second: pickup_coin_67
+  - first:
+      213: -7624713747108114651
+    second: pickup_coin_68
+  - first:
+      213: -2047982267792565301
+    second: pickup_coin_69
+  - first:
+      213: -6492428794504460023
+    second: pickup_coin_70
+  - first:
+      213: -8655812189735546667
+    second: pickup_coin_71
+  - first:
+      213: 7593375624821490793
+    second: pickup_coin_72
+  - first:
+      213: 5743771862414155415
+    second: pickup_coin_73
+  - first:
+      213: 2881954984173064349
+    second: pickup_coin_74
+  - first:
+      213: -7192638776986075496
+    second: pickup_coin_75
+  - first:
+      213: -1229883043610012058
+    second: pickup_coin_76
+  - first:
+      213: -6414731989255393433
+    second: pickup_coin_77
+  - first:
+      213: 6939188043365818365
+    second: pickup_coin_78
+  - first:
+      213: 5058705707706060880
+    second: pickup_coin_79
+  - first:
+      213: -6822687924030168281
+    second: pickup_coin_80
+  - first:
+      213: 4749128796395043411
+    second: pickup_coin_81
+  - first:
+      213: 1304054544265657676
+    second: pickup_coin_82
+  - first:
+      213: 348477034060944656
+    second: pickup_coin_83
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: pickup_coin_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d35d6d1431a1e947aa74c863ba663d1
+      internalID: -3433284098071889216
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ff54a454c12544b8841ae31340ecda
+      internalID: -7220006669667966304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 747e07cf8844efa42b0427e7b86c728d
+      internalID: 866161371655847404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7593d9bdf7a761e4f9e43eb6649967ed
+      internalID: 6373893870712126807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85a8c30dfb7fdb64bada51ac8de9115b
+      internalID: -640066386507413514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c4cae220440d6644b1689a0fbfcf964
+      internalID: 2323939225981126513
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41d46ad3074e2934e9cea327c36c3493
+      internalID: 7153946728849999884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: da4653b385d53444c9ce5daad248207a
+      internalID: 1331121607104604086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_8
+      rect:
+        serializedVersion: 2
+        x: 1024
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a3a77e69cc0b73428949605e8de5879
+      internalID: 3588132487822153290
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_9
+      rect:
+        serializedVersion: 2
+        x: 1152
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5edef5aab7008b0449c412401d84c14f
+      internalID: 7447092260370511124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_10
+      rect:
+        serializedVersion: 2
+        x: 1280
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eea89da98ea22a41b7168d3d622a7e6
+      internalID: 5234424967655960444
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_11
+      rect:
+        serializedVersion: 2
+        x: 1408
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1689d4398bd0b6c44bdd7c512258c0d0
+      internalID: 5767377191223330080
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_12
+      rect:
+        serializedVersion: 2
+        x: 1536
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5ab4c640a0461ec40889eeb1e956468a
+      internalID: -100493216667405453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_13
+      rect:
+        serializedVersion: 2
+        x: 1664
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3e607ad82797a2c44bbcfcbe4ffd7a11
+      internalID: 8331727005898014276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_14
+      rect:
+        serializedVersion: 2
+        x: 1792
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b7273f747e687c4386ff077d0df6703
+      internalID: -939696149135599738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_15
+      rect:
+        serializedVersion: 2
+        x: 1920
+        y: 128
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7a4a74507c17403498dc0ce306d31efd
+      internalID: -4058861698582787861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72ae0487f46d69b46b267a9b4ee9ca99
+      internalID: 1611604446291890820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3cb120414097e6b47b4672031f6bdaf8
+      internalID: -787192029112310730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_18
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a84ee5716570b2741bda014fc4283ffd
+      internalID: 6918920185964228713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_19
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c877308301bf2eb43bae313bf1b706e0
+      internalID: 5109369638371427655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: pickup_coin_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c7522f2467073a46bb89a4c23ca7852
+      internalID: -7157088747930145720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: db967ac0f03d7bf4584d6a009514ded6
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
