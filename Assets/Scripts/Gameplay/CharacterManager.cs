@@ -7,11 +7,7 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private Animator _animator;
     [SerializeField]
-    private CollisionEventLogic _footColliderLogic;
-    [SerializeField]
-    private CollisionEventLogic _frontColliderLogic;
-    [SerializeField]
-    private Collider2D _headBumperCollider;
+    private TriggerEventLogic _footColliderLogic;
     [Header("Physics")]
     [SerializeField]
     private float _moveSpeed = 3.5f;
@@ -41,25 +37,21 @@ public class CharacterManager : MonoBehaviour
     {
         _sceneController = controller;
 
-        var footData = new CollisionEventData
+        var footData = new TriggerEventData
         {
-            CollisionEnterAction = OnFootCollisionEnter,
-            CollisionExitAction = OnFootCollisionExit
+            TriggerEnterAction = OnFootTriggerEnter,
+            TriggerExitAction = null,
         };
         _footColliderLogic.Initialize(footData);
-        var frontData = new CollisionEventData
-        {
-            CollisionEnterAction = OnFrontCollisionEnter,
-            CollisionExitAction = OnFrontCollisionExit
-        };
-        _frontColliderLogic.Initialize(frontData);
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _rigidbody2D.simulated = false;
     }
 
     public void StartLevel()
     {
         _animator.SetBool(_groundedAnimKey, true);
+        _rigidbody2D.simulated = true;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -96,29 +88,14 @@ public class CharacterManager : MonoBehaviour
         _sceneController.OnCoinCollected(coinsCollected);
     }
 
-    private void OnFootCollisionEnter(Transform t)
+    private void OnFootTriggerEnter(Transform t)
     {
-        IsGrounded = true;
-        IsFalling = false;
-    }
-
-    private void OnFootCollisionExit(Transform t)
-    {
-        IsGrounded = false;
-        if (!IsJumping)
+        var _speed = _rigidbody2D.velocity;
+        if (_speed.y < 0.0f)
         {
-            IsFalling = true;
+            _mustJump = true;
+            return;
         }
-    }
-
-    private void OnFrontCollisionEnter(Transform t)
-    {
-        IsFacingWall = true;
-    }
-
-    private void OnFrontCollisionExit(Transform t)
-    {
-        IsFacingWall = false;
     }
 
     public void OnTapDown()
@@ -128,23 +105,23 @@ public class CharacterManager : MonoBehaviour
             return;
         }
 
-        if (IsGrounded)
-        {
-            // simple jump
-            Debug.Log("Jump");
-            _mustJump = true;
-            return;
-        }
-        else
-        {
-            if (IsFacingWall)
-            {
-                // rotate and jump
-                transform.right *= -1.0f;
-                IsFalling = false;
-                _mustJump = true;
-            }
-        }        
+        //if (IsGrounded)
+        //{
+        //    // simple jump
+        //    Debug.Log("Jump");
+        //    _mustJump = true;
+        //    return;
+        //}
+        //else
+        //{
+        //    if (IsFacingWall)
+        //    {
+        //        // rotate and jump
+        //        transform.right *= -1.0f;
+        //        IsFalling = false;
+        //        _mustJump = true;
+        //    }
+        //}
     }
 
     private void FixedUpdate()
@@ -162,17 +139,14 @@ public class CharacterManager : MonoBehaviour
 
         if (_mustJump)
         {
-            //_rigidbody2D.AddForce(Vector2.up * _jumpForce, ForceMode2D.Impulse);
             _speed.y = _jumpSpeed;
             IsJumping = true;
-            _headBumperCollider.enabled = true;
             _animator.SetBool(_jumpAnimKey, true);
         }
 
         if (IsJumping && _speed.y < 0.0f)
         {
             IsJumping = false;
-            _headBumperCollider.enabled = false;
             IsFalling = true;
         }
 
