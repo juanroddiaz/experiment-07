@@ -141,6 +141,7 @@ public class CharacterManager : MonoBehaviour
         {
             _speed.y = _jumpSpeed;
             IsJumping = true;
+            IsFalling = false;
             _animator.SetBool(_jumpAnimKey, true);
         }
 

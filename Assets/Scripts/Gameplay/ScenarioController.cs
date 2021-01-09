@@ -10,8 +10,6 @@ public class ScenarioController : MonoBehaviour
     [SerializeField]
     private HudGameplayController _hud;
     [SerializeField]
-    private Grid _tilemapGrid;
-    [SerializeField]
     private Transform _emptyCellsParent;
     [SerializeField]
     private CoinObjectLogic _coinPrefab;
@@ -53,50 +51,16 @@ public class ScenarioController : MonoBehaviour
         _levelData.MaxHeight = GameController.Instance.DataLoader.GetLevelMaxHeight(levelEntry.Name);
         Debug.Log("Level " + _levelData.Name + " max height: " + _levelData.MaxHeight.ToString());
 
-        var levelObj = GameObject.Instantiate(levelEntry.GamePrefab, _tilemapGrid.transform);
-        levelObj.transform.localPosition = _levelLocalPosition;
-        InitializeTilemap();
+        //var levelObj = GameObject.Instantiate(levelEntry.GamePrefab, _tilemapGrid.transform);
+        //levelObj.transform.localPosition = _levelLocalPosition;
+        InitializeLevel();
         CurrentLevelTime = _levelTotalTime;
         TogglePause(false);
         LevelStarted = false;
     }
 
-    private void InitializeTilemap()
+    private void InitializeLevel()
     {
-        Tilemap tileMap = _tilemapGrid.GetComponentInChildren<Tilemap>();
-        BoundsInt size = tileMap.cellBounds;
-
-        for (int n = size.xMin; n < size.xMax; n++)
-        {
-            for (int p = size.yMin; p < size.yMax; p++)
-            {
-                if(_characterInitialPosition.x == n && _characterInitialPosition.y == p)
-                {
-                    continue;
-                }
-
-                Vector3Int localPlace = (new Vector3Int(n, p, (int)tileMap.transform.position.y));
-                if (!tileMap.HasTile(localPlace))
-                {
-                    //No tile at "place"
-                    Vector3 place = tileMap.CellToWorld(localPlace);
-                    var spike = _spikesPosition.Find(pos => pos.CellCoords.x == n && pos.CellCoords.y == p);
-                    if (spike != null)
-                    {
-                        CreateSpikeInCell(place, spike);
-                    }
-
-                    bool isTimeBonus = _timeBonusPosition.x == n && _timeBonusPosition.y == p;
-                    if (isTimeBonus)
-                    {
-                        CreateTimeBonusInCell(place, n, p);
-                        continue;
-                    }
-
-                    CreateCoinInCell(place, n, p);
-                }
-            }
-        }
     }
 
     private void CreateTimeBonusInCell(Vector3 place, int n, int p)

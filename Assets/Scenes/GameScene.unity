@@ -168,7 +168,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _character: {fileID: 985355956}
   _hud: {fileID: 154889330}
-  _tilemapGrid: {fileID: 1739777301}
   _emptyCellsParent: {fileID: 840428178}
   _coinPrefab: {fileID: 43162120, guid: 867d98c2dc85ca34c9010d4d8447e767, type: 3}
   _timeBonusPrefab: {fileID: 4277410480191113961, guid: 4feeedd274369f049857ceee68deaa21,
@@ -631,7 +630,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 705507993}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
