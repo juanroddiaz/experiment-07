@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameLevelData
 {
     public string Name = "";
-    public int MaxCoins = 0;
+    public int MaxHeight = 0;
 }
 
 public class GameDataLoader : MonoBehaviour
@@ -27,7 +27,7 @@ public class GameDataLoader : MonoBehaviour
             {
                 GameData.Add(new GameLevelData {
                     Name = name,
-                    MaxCoins = PlayerPrefs.GetInt(name)
+                    MaxHeight = PlayerPrefs.GetInt(name)
                 });
             }
         }
@@ -44,7 +44,7 @@ public class GameDataLoader : MonoBehaviour
         }
     }
 
-    public int GetLevelMaxCoins(string levelName)
+    public int GetLevelMaxHeight(string levelName)
     {
         var key = GameData.Find(k => string.Equals(k.Name, levelName));
         if (key == null)
@@ -52,7 +52,7 @@ public class GameDataLoader : MonoBehaviour
             Debug.Log("No data for level " + levelName);
             return 0;
         }
-        return key.MaxCoins;
+        return key.MaxHeight;
     }
 
     public bool TrySaveLevelMaxCoins(GameLevelData data)
@@ -63,19 +63,19 @@ public class GameDataLoader : MonoBehaviour
             GameData.Add(new GameLevelData
             {
                 Name = data.Name,
-                MaxCoins = data.MaxCoins
+                MaxHeight = data.MaxHeight
             });
 
             // save
-            PlayerPrefs.SetInt(data.Name, data.MaxCoins);
+            PlayerPrefs.SetInt(data.Name, data.MaxHeight);
             return true;
         }
 
-        if (key.MaxCoins < data.MaxCoins)
+        if (key.MaxHeight < data.MaxHeight)
         {
-            key.MaxCoins = data.MaxCoins;
+            key.MaxHeight = data.MaxHeight;
             // save
-            PlayerPrefs.SetInt(data.Name, data.MaxCoins);
+            PlayerPrefs.SetInt(data.Name, data.MaxHeight);
             return true;
         }
 
@@ -86,7 +86,7 @@ public class GameDataLoader : MonoBehaviour
     {
         foreach (var data in GameData)
         {
-            data.MaxCoins = 0;
+            data.MaxHeight = 0;
             PlayerPrefs.SetInt(data.Name, 0);
         }
         SaveLastSelectedLevel(0);

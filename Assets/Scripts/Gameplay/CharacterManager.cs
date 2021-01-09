@@ -92,7 +92,7 @@ public class CharacterManager : MonoBehaviour
     private void OnCoinCollected(CoinObjectLogic coinLogic)
     {
         //Debug.Log(coinLogic.gameObject.name);
-        var coinsCollected = coinLogic.OnCollected(_sceneController.LevelCoins);
+        var coinsCollected = coinLogic.OnCollected(_sceneController.LevelHeight);
         _sceneController.OnCoinCollected(coinsCollected);
     }
 

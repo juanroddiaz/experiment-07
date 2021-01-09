@@ -35,7 +35,7 @@ public class ScenarioController : MonoBehaviour
 
     public float CurrentLevelTime { get; private set; }
     public bool LevelStarted { get; private set; }
-    public int LevelCoins { get; private set; }
+    public int LevelHeight { get; private set; }
 
     private void Awake()
     {
@@ -48,10 +48,10 @@ public class ScenarioController : MonoBehaviour
         _levelData = new GameLevelData
         {
             Name = levelEntry.Name,
-            MaxCoins = 0
+            MaxHeight = 0
         };
-        _levelData.MaxCoins = GameController.Instance.DataLoader.GetLevelMaxCoins(levelEntry.Name);
-        Debug.Log("Level " + _levelData.Name + " max coins: " + _levelData.MaxCoins.ToString());
+        _levelData.MaxHeight = GameController.Instance.DataLoader.GetLevelMaxHeight(levelEntry.Name);
+        Debug.Log("Level " + _levelData.Name + " max height: " + _levelData.MaxHeight.ToString());
 
         var levelObj = GameObject.Instantiate(levelEntry.GamePrefab, _tilemapGrid.transform);
         levelObj.transform.localPosition = _levelLocalPosition;
@@ -141,16 +141,16 @@ public class ScenarioController : MonoBehaviour
         if (GameController.Instance.DataLoader.TrySaveLevelMaxCoins(new GameLevelData
         {
             Name = _levelData.Name,
-            MaxCoins = LevelCoins
+            MaxHeight = LevelHeight
         }))
         {
-            _levelData.MaxCoins = LevelCoins;
+            _levelData.MaxHeight = LevelHeight;
         }
     }
 
     public int GetMaxLevelCoins()
     {
-        return _levelData.MaxCoins;
+        return _levelData.MaxHeight;
     }
 
     public void TogglePause(bool toggle)
@@ -161,7 +161,7 @@ public class ScenarioController : MonoBehaviour
 
     public void OnCoinCollected(int amount)
     {
-        LevelCoins += amount;
+        LevelHeight += amount;
     }
 
     private void Update()

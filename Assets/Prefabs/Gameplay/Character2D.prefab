@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 637647159}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0.25, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1662287353879820323}
   m_RootOrder: 3
@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -159,9 +160,9 @@ MonoBehaviour:
   _footColliderLogic: {fileID: 1662287354625546605}
   _frontColliderLogic: {fileID: 1662287355229318721}
   _headBumperCollider: {fileID: 5264191778586322879}
-  _moveSpeed: 4
+  _moveSpeed: 0
   _jumpSpeed: 8.75
-  _wallSlideSpeed: -2
+  _wallSlideSpeed: 0
 --- !u!50 &1662287353879820325
 Rigidbody2D:
   serializedVersion: 4
@@ -285,8 +286,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.5}
-  m_Size: {x: 1.1, y: 0.2}
+  m_Offset: {x: 0, y: -0.3}
+  m_Size: {x: 0.8, y: 0.2}
   m_Direction: 1
 --- !u!1 &1662287355229318750
 GameObject:
@@ -305,7 +306,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1662287355229318751
 Transform:
   m_ObjectHideFlags: 0
@@ -392,6 +393,6 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.375}
-  m_Size: {x: 0.8, y: 0.25}
+  m_Offset: {x: 0, y: 0.4}
+  m_Size: {x: 0.8, y: 0.2}
   m_Direction: 1
