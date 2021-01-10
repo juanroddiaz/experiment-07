@@ -16,22 +16,14 @@ public class ScenarioController : MonoBehaviour
     [SerializeField]
     private TimeObjectLogic _timeBonusPrefab;
     [SerializeField]
-    private float _levelTotalTime = 20.0f;
-    [SerializeField]
     private Vector2 _characterInitialPosition;
     [SerializeField]
-    private Vector3 _levelLocalPosition = new Vector3(-1.0f, 0.0f, 0.0f);
-    [SerializeField]
-    private SpikeObjectLogic _spikePrefab;
-    [Header("Time Bonus")]
-    [SerializeField]
-    private int _timeBonusInSeconds = 10;
+    private Transform _cameraPivotPosition;
 
     private GameLevelData _levelData;
-    private Vector2 _timeBonusPosition = Vector2.zero;
-    private List<SpikeData> _spikesPosition = new List<SpikeData>();
+    private Vector3 _baseCameraPivotPos = Vector3.zero;
 
-    public float CurrentLevelTime { get; private set; }
+    public float CurrentMaxHeight { get; private set; }
     public bool LevelStarted { get; private set; }
     public int LevelHeight { get; private set; }
 
@@ -41,8 +33,6 @@ public class ScenarioController : MonoBehaviour
         _hud.Initialize(this, _character.OnTapDown);
         // level init
         LevelData levelEntry = GameController.Instance.GetSelectedLevelData();
-        _timeBonusPosition = levelEntry.TimeBonusCellPosition;
-        _spikesPosition = levelEntry.SpikesPosition;
         _levelData = new GameLevelData
         {
             Name = levelEntry.Name,
@@ -53,8 +43,10 @@ public class ScenarioController : MonoBehaviour
 
         //var levelObj = GameObject.Instantiate(levelEntry.GamePrefab, _tilemapGrid.transform);
         //levelObj.transform.localPosition = _levelLocalPosition;
+        _baseCameraPivotPos = _cameraPivotPosition.position;
         InitializeLevel();
-        CurrentLevelTime = _levelTotalTime;
+        CurrentMaxHeight = 0.0f;
+        _hud.UpdateHeightCounter(0);
         TogglePause(false);
         LevelStarted = false;
     }
@@ -63,33 +55,33 @@ public class ScenarioController : MonoBehaviour
     {
     }
 
-    private void CreateTimeBonusInCell(Vector3 place, int n, int p)
-    {
-        var emptyCellObj = Instantiate(_timeBonusPrefab, _emptyCellsParent);
-        emptyCellObj.name = "Timecell_" + n.ToString() + "_" + p.ToString();
-        emptyCellObj.transform.position = place;
-        emptyCellObj.GetComponent<TimeObjectLogic>().Initialize(_hud, _timeBonusInSeconds, () => 
-        {
-            CreateCoinInCell(place, n, p);
-            CurrentLevelTime += _timeBonusInSeconds;
-        });
-    }
+    //private void CreateTimeBonusInCell(Vector3 place, int n, int p)
+    //{
+    //    var emptyCellObj = Instantiate(_timeBonusPrefab, _emptyCellsParent);
+    //    emptyCellObj.name = "Timecell_" + n.ToString() + "_" + p.ToString();
+    //    emptyCellObj.transform.position = place;
+    //    emptyCellObj.GetComponent<TimeObjectLogic>().Initialize(_hud, _timeBonusInSeconds, () => 
+    //    {
+    //        CreateCoinInCell(place, n, p);
+    //        CurrentLevelTime += _timeBonusInSeconds;
+    //    });
+    //}
 
-    private void CreateSpikeInCell(Vector3 place, SpikeData spike)
-    {
-        var emptyCellObj = Instantiate(_spikePrefab, _emptyCellsParent);
-        emptyCellObj.name = "Spike_" + spike.CellCoords.x.ToString() + "_" + spike.CellCoords.y.ToString();
-        emptyCellObj.transform.position = place;
-        emptyCellObj.GetComponent<SpikeObjectLogic>().Initialize(spike.Position);
-    }
+    //private void CreateSpikeInCell(Vector3 place, SpikeData spike)
+    //{
+    //    var emptyCellObj = Instantiate(_spikePrefab, _emptyCellsParent);
+    //    emptyCellObj.name = "Spike_" + spike.CellCoords.x.ToString() + "_" + spike.CellCoords.y.ToString();
+    //    emptyCellObj.transform.position = place;
+    //    emptyCellObj.GetComponent<SpikeObjectLogic>().Initialize(spike.Position);
+    //}
 
-    private void CreateCoinInCell(Vector3 place, int n, int p)
-    {
-        var emptyCellObj = Instantiate(_coinPrefab, _emptyCellsParent);
-        emptyCellObj.name = "cell_" + n.ToString() + "_" + p.ToString();
-        emptyCellObj.transform.position = place;
-        emptyCellObj.GetComponent<CoinObjectLogic>().Initialize(_hud);
-    }
+    //private void CreateCoinInCell(Vector3 place, int n, int p)
+    //{
+    //    var emptyCellObj = Instantiate(_coinPrefab, _emptyCellsParent);
+    //    emptyCellObj.name = "cell_" + n.ToString() + "_" + p.ToString();
+    //    emptyCellObj.transform.position = place;
+    //    emptyCellObj.GetComponent<CoinObjectLogic>().Initialize(_hud);
+    //}
 
     public void StartLevel()
     {
@@ -135,16 +127,29 @@ public class ScenarioController : MonoBehaviour
             return;
         }
 
-        CurrentLevelTime -= Time.deltaTime;
-        if (CurrentLevelTime <= 0.0f)
+        if (_character.transform.position.y >= CurrentMaxHeight)
         {
-            // end level
-            LevelStarted = false;
-            CurrentLevelTime = 0.0f;
+            CurrentMaxHeight = _character.transform.position.y;
+            _hud.UpdateHeightCounter(Mathf.FloorToInt(CurrentMaxHeight));
         }
 
+        if (_cameraPivotPosition.position.y <= CurrentMaxHeight)
+        {
+            _baseCameraPivotPos.y = CurrentMaxHeight;
+            _cameraPivotPosition.position = _baseCameraPivotPos;
+        }
+
+
+        //CurrentMaxHeight -= Time.deltaTime;
+        //if (CurrentMaxHeight <= 0.0f)
+        //{
+        //    // end level
+        //    LevelStarted = false;
+        //    CurrentMaxHeight = 0.0f;
+        //}
+
         // hud update time and check level end
-        _hud.UpdateLevelCountdown(CurrentLevelTime, !LevelStarted);
+        //_hud.UpdateLevelCountdown(CurrentMaxHeight, !LevelStarted);
     }
 
     public void OnDeath()

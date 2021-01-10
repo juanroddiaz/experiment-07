@@ -46,7 +46,7 @@ public class CoinObjectLogic : MonoBehaviour
         SetState(CoinObjectState.Coin);
         _currentChestCounter = null;
         _hudGameplayController = hudGameplay;
-        _hudCoinTarget = hudGameplay.GetCoinHudTargetTransform();
+        //_hudCoinTarget = hudGameplay.GetCoinHudTargetTransform();
     }
 
     private void SetState(CoinObjectState state)
@@ -108,7 +108,7 @@ public class CoinObjectLogic : MonoBehaviour
             StartTransform = _currentSpriteObj.transform,
             TargetPosition = Camera.main.ScreenToWorldPoint(targetPosition),
             OnFeedbackStarts = null,
-            OnFeedbackReachedEnd = _hudGameplayController.UpdateCoinCounter,
+            OnFeedbackReachedEnd = _hudGameplayController.UpdateHeightCounter,
             Amount = amount
         };
         feedback.Init(data);

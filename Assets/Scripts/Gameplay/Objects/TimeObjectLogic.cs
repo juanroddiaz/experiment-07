@@ -16,7 +16,7 @@ public class TimeObjectLogic : MonoBehaviour
     public void Initialize(HudGameplayController hudGameplay, int seconds, Action afterCollected)
     {
         _hudGameplayController = hudGameplay;
-        _hudTimeTarget = hudGameplay.GetTimeHudTargetTransform();
+        //_hudTimeTarget = hudGameplay.GetTimeHudTargetTransform();
         _onAfterCollected = afterCollected;
         _secondsAdded = seconds;
     }
@@ -39,7 +39,7 @@ public class TimeObjectLogic : MonoBehaviour
             StartTransform = transform,
             TargetPosition = Camera.main.ScreenToWorldPoint(targetPosition),
             OnFeedbackStarts = null,
-            OnFeedbackReachedEnd = _hudGameplayController.UpdateTimeCounter,
+            //OnFeedbackReachedEnd = _hudGameplayController.UpdateTimeCounter,
             Amount = _secondsAdded
         };
         feedback.Init(data);

@@ -8,9 +8,9 @@ public class LevelData
     public string Name;
     public GameObject GamePrefab;
     public Sprite MenuImage;
-    public Vector2 TimeBonusCellPosition;
+    //public Vector2 TimeBonusCellPosition;
     public AudioClip Music;
-    public List<SpikeData> SpikesPosition;
+    //public List<SpikeData> SpikesPosition;
 }
 
 public class GameController : MonoBehaviour
