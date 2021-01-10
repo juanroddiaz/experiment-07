@@ -38,10 +38,17 @@ public class HudGameplayController : MonoBehaviour
     private ScenarioController _sceneController;
     private int _coinCounterVisualAmount = 0;
 
-    public void Initialize(ScenarioController controller, Action onDown)
+    private Action _onMovingLeftAction;
+    private Action _onMovingRightAction;
+    private Action _onButtonUpAction;
+
+    public void Initialize(ScenarioController controller, Action onDown, Action onLeft, Action onRight, Action onButtonUp)
     {
         _sceneController = controller;
         _onTapListener.Initialize(onDown);
+        _onMovingLeftAction = onLeft;
+        _onMovingRightAction = onRight;
+        _onButtonUpAction = onButtonUp;
         OnStartLevel();
     }
 
@@ -113,6 +120,21 @@ public class HudGameplayController : MonoBehaviour
         //    _extraCoinsCounter.gameObject.SetActive(true);
         //    _feedbackAnimation.Play("ExtraCoins");
         //}
+    }
+
+    public void OnLeftButtonDown()
+    {
+        _onMovingLeftAction?.Invoke();
+    }
+
+    public void OnButtonUp()
+    {
+        _onButtonUpAction?.Invoke();
+    }
+
+    public void OnRightButton()
+    {
+        _onMovingRightAction?.Invoke();
     }
 
     private void OnFinishLevel()

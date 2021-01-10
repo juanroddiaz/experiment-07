@@ -124,6 +124,22 @@ public class CharacterManager : MonoBehaviour
         //}
     }
 
+    public void OnLeftDown()
+    {
+        Debug.Log("Pressing left!");
+    }
+
+    public void OnRightDown()
+    {
+        Debug.Log("Pressing right!");
+    }
+
+    public void OnButtonUp()
+    {
+        Debug.Log("Button Up");
+    }
+
+
     private void FixedUpdate()
     {
         if (!_sceneController.LevelStarted)

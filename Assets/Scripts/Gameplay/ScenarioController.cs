@@ -30,7 +30,7 @@ public class ScenarioController : MonoBehaviour
     private void Awake()
     {
         _character.Initialize(this);
-        _hud.Initialize(this, _character.OnTapDown);
+        _hud.Initialize(this, _character.OnTapDown, _character.OnLeftDown, _character.OnRightDown, _character.OnButtonUp);
         // level init
         LevelData levelEntry = GameController.Instance.GetSelectedLevelData();
         _levelData = new GameLevelData
