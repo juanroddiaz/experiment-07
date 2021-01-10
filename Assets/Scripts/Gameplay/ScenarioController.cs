@@ -19,6 +19,10 @@ public class ScenarioController : MonoBehaviour
     private Vector2 _characterInitialPosition;
     [SerializeField]
     private Transform _cameraPivotPosition;
+    [Header("Platforms")]
+    [SerializeField]
+    private PlatformCatalogue _catalogue;
+
 
     private GameLevelData _levelData;
     private Vector3 _baseCameraPivotPos = Vector3.zero;
