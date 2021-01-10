@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _animator: {fileID: 1662287354508488338}
   _footColliderLogic: {fileID: 5378962291154956780}
-  _moveSpeed: 0
+  _moveSpeed: 3
   _jumpSpeed: 8.75
   _wallSlideSpeed: 0
 --- !u!50 &1662287353879820325

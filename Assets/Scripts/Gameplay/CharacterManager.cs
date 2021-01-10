@@ -23,6 +23,9 @@ public class CharacterManager : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private bool _mustJump = false;
+    private bool _goingLeft = false;
+    private bool _goingRight = false;
+    private bool _moving = false;
     private Vector2 _speed = Vector2.zero;
 
     private ScenarioController _sceneController;
@@ -127,16 +130,27 @@ public class CharacterManager : MonoBehaviour
     public void OnLeftDown()
     {
         Debug.Log("Pressing left!");
+        _goingLeft = true;
+        _goingRight = false;
+        _moving = true;
+        transform.right = Vector3.left;
     }
 
     public void OnRightDown()
     {
         Debug.Log("Pressing right!");
+        _goingRight = true;
+        _goingLeft = false;
+        _moving = true;
+        transform.right = Vector3.right;
     }
 
     public void OnButtonUp()
     {
         Debug.Log("Button Up");
+        _goingRight = false;
+        _goingLeft = false;
+        _moving = false; 
     }
 
 
@@ -148,10 +162,7 @@ public class CharacterManager : MonoBehaviour
         }
 
         var _speed = _rigidbody2D.velocity;
-        if (!IsFacingWall)
-        {
-            _speed.x = transform.right.x * _moveSpeed;
-        }
+        _speed.x = _moving ? transform.right.x * _moveSpeed : 0.0f;
 
         if (_mustJump)
         {
