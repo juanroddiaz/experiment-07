@@ -80,7 +80,15 @@ public class ScenarioController : MonoBehaviour
         }
     }
 
+    public int GetPlatformAmountByDifficulty(PlatformDifficulty difficulty)
+    {
+        return _catalogue.LayerData.Find(x => x.Difficulty == difficulty).Amount;
+    }
 
+    public List<PlatformConfig> GetPlatformsByDifficulty(PlatformDifficulty difficulty)
+    {
+        return _catalogue.Platforms.FindAll(x => x.Difficulty == difficulty);
+    }
 
     //private void CreateTimeBonusInCell(Vector3 place, int n, int p)
     //{
