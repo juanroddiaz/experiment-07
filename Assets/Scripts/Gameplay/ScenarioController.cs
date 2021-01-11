@@ -22,6 +22,12 @@ public class ScenarioController : MonoBehaviour
     [Header("Platforms")]
     [SerializeField]
     private PlatformCatalogue _catalogue;
+    [SerializeField]
+    private ScenarioConfig _config;
+    [SerializeField]
+    private Transform _layersParent;
+    [SerializeField]
+    private float _startLayerPosition = -2.0f;
 
 
     private GameLevelData _levelData;
@@ -57,7 +63,24 @@ public class ScenarioController : MonoBehaviour
 
     private void InitializeLevel()
     {
+        if (_config == null)
+        {
+            return;
+        }
+
+        int layerIndex = 0;
+        float layerPosition = _startLayerPosition;
+        foreach (var layer in _config.ScenarioData)
+        {
+            var layerObj = Instantiate(layer, _layersParent);
+            layerObj.transform.localPosition = new Vector3(0.0f, layerPosition, 0.0f);
+            PlatformLayerLogic logic = layerObj.GetComponent<PlatformLayerLogic>();
+            logic.Initialize(this, layerIndex);
+            layerPosition += 2.0f;
+        }
     }
+
+
 
     //private void CreateTimeBonusInCell(Vector3 place, int n, int p)
     //{
