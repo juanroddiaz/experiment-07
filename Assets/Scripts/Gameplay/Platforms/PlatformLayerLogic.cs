@@ -3,11 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformLayerLogic : MonoBehaviour
-{
-    [SerializeField]
-    private PlatformDifficulty _minimumDifficulty;
-    [SerializeField]
-    private PlatformDifficulty _maximumDifficulty;
+{ 
     [SerializeField]
     private float _halfHorizontalSpace = 2.0f;
     [SerializeField]
@@ -16,14 +12,18 @@ public class PlatformLayerLogic : MonoBehaviour
     private ScenarioController _controller;
     private Vector2 _platformDistances = Vector2.zero;
     private List<Vector3> _platformPositions = new List<Vector3>();
+    private PlatformDifficulty _minimumDifficulty;
+    private PlatformDifficulty _maximumDifficulty;
 
-    public void Initialize(ScenarioController controller, int layerIndex)
+    public void Initialize(ScenarioController controller, LayersChunkData data,  int layerChunkIndex, int index)
     {
         _controller = controller;
         // get difficulty platforms amount
+        _minimumDifficulty = data.LowerDifficulty;
+        _maximumDifficulty = data.UpperDifficulty;
+
         int amount = _controller.GetPlatformAmountByDifficulty(_minimumDifficulty);
         List<PlatformConfig> platforms = _controller.GetPlatformsByDifficulty(_minimumDifficulty);
-
         // if different, get a random amount between the two
         if (_minimumDifficulty != _maximumDifficulty)
         {
@@ -40,6 +40,8 @@ public class PlatformLayerLogic : MonoBehaviour
             var platform = Instantiate(randomPlatform.Asset, transform);
             platform.transform.localPosition = GetPlatformPosition(amount);
         }
+
+        gameObject.name = "Layer_" + layerChunkIndex + "_" + index; 
     }
 
     private Vector3 GetPlatformPosition(int amount)

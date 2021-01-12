@@ -10,7 +10,7 @@ public class ScenarioController : MonoBehaviour
     [SerializeField]
     private HudGameplayController _hud;
     [SerializeField]
-    private Transform _emptyCellsParent;
+    private GameObject _layerPrefab;
     [SerializeField]
     private CoinObjectLogic _coinPrefab;
     [SerializeField]
@@ -70,13 +70,17 @@ public class ScenarioController : MonoBehaviour
 
         int layerIndex = 0;
         float layerPosition = _startLayerPosition;
-        foreach (var layer in _config.ScenarioData)
+        foreach (var layerChunk in _config.LayersData)
         {
-            var layerObj = Instantiate(layer, _layersParent);
-            layerObj.transform.localPosition = new Vector3(0.0f, layerPosition, 0.0f);
-            PlatformLayerLogic logic = layerObj.GetComponent<PlatformLayerLogic>();
-            logic.Initialize(this, layerIndex);
-            layerPosition += 2.0f;
+            for (int i = 0; i < layerChunk.LayersAmount; i++)
+            {
+                var layerObj = Instantiate(_layerPrefab, _layersParent);
+                layerObj.transform.localPosition = new Vector3(0.0f, layerPosition, 0.0f);
+                PlatformLayerLogic logic = layerObj.GetComponent<PlatformLayerLogic>();
+                logic.Initialize(this, layerChunk, layerIndex, i);
+                layerPosition += 2.0f;
+            }
+            
         }
     }
 

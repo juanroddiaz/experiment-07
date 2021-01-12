@@ -23,3 +23,7 @@ MonoBehaviour:
   - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
   - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
   - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
+  LayersData:
+  - LayersAmount: 10
+    LowerDifficulty: 0
+    UpperDifficulty: 0
