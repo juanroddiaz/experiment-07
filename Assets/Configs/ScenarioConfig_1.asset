@@ -12,18 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273da43164403e447b5dfda017f1ca1c, type: 3}
   m_Name: ScenarioConfig_1
   m_EditorClassIdentifier: 
-  ScenarioData:
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
-  - {fileID: 8571691585459989227, guid: d48a9cce9a2c0754cbe05d0eb55fb83b, type: 3}
   LayersData:
   - LayersAmount: 10
     LowerDifficulty: 0
     UpperDifficulty: 0
+  - LayersAmount: 10
+    LowerDifficulty: 0
+    UpperDifficulty: 1

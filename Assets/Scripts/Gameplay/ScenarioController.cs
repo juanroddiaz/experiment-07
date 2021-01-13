@@ -40,7 +40,7 @@ public class ScenarioController : MonoBehaviour
     private void Awake()
     {
         _character.Initialize(this);
-        _hud.Initialize(this, _character.OnTapDown, _character.OnLeftDown, _character.OnRightDown, _character.OnButtonUp);
+        _hud.Initialize(this, _character.OnSwipe, _character.OnLeftDown, _character.OnRightDown, _character.OnButtonUp);
         // level init
         LevelData levelEntry = GameController.Instance.GetSelectedLevelData();
         _levelData = new GameLevelData
@@ -80,7 +80,8 @@ public class ScenarioController : MonoBehaviour
                 logic.Initialize(this, layerChunk, layerIndex, i);
                 layerPosition += 2.0f;
             }
-            
+
+            layerIndex++;
         }
     }
 

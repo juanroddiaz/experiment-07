@@ -42,10 +42,10 @@ public class HudGameplayController : MonoBehaviour
     private Action _onMovingRightAction;
     private Action _onButtonUpAction;
 
-    public void Initialize(ScenarioController controller, Action onDown, Action onLeft, Action onRight, Action onButtonUp)
+    public void Initialize(ScenarioController controller, Action<bool> onSwipe, Action onLeft, Action onRight, Action onButtonUp)
     {
         _sceneController = controller;
-        _onTapListener.Initialize(onDown);
+        _onTapListener.Initialize(onSwipe);
         _onMovingLeftAction = onLeft;
         _onMovingRightAction = onRight;
         _onButtonUpAction = onButtonUp;

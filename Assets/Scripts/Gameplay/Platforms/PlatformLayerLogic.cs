@@ -39,6 +39,8 @@ public class PlatformLayerLogic : MonoBehaviour
             var randomPlatform = platforms[Random.Range(0, totalPlatformsAmount)];
             var platform = Instantiate(randomPlatform.Asset, transform);
             platform.transform.localPosition = GetPlatformPosition(amount);
+            BasePlatformLogic logic = platform.GetComponent<BasePlatformLogic>();
+            logic.Initialize(this);
         }
 
         gameObject.name = "Layer_" + layerChunkIndex + "_" + index; 

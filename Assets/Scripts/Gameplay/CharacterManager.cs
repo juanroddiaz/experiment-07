@@ -101,30 +101,20 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    public void OnTapDown()
+    public void OnSwipe(bool goingRight)
     {
         if (!_sceneController.LevelStarted)
         {
             return;
         }
 
-        //if (IsGrounded)
-        //{
-        //    // simple jump
-        //    Debug.Log("Jump");
-        //    _mustJump = true;
-        //    return;
-        //}
-        //else
-        //{
-        //    if (IsFacingWall)
-        //    {
-        //        // rotate and jump
-        //        transform.right *= -1.0f;
-        //        IsFalling = false;
-        //        _mustJump = true;
-        //    }
-        //}
+        if (goingRight)
+        {
+            OnRightDown();
+            return;
+        }
+
+        OnLeftDown();
     }
 
     public void OnLeftDown()
