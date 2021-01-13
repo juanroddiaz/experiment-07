@@ -31,7 +31,8 @@ public class ScenarioController : MonoBehaviour
 
 
     private GameLevelData _levelData;
-    private Vector3 _baseCameraPivotPos = Vector3.zero;
+    private Vector3 _baseCameraPivotPos;
+    private List<PlatformLayerLogic> _layerInstances = new List<PlatformLayerLogic>();
 
     public float CurrentMaxHeight { get; private set; }
     public bool LevelStarted { get; private set; }
@@ -39,7 +40,13 @@ public class ScenarioController : MonoBehaviour
 
     private void Awake()
     {
+        InitializeScene();
+    }
+
+    public void InitializeScene()
+    {
         _character.Initialize(this);
+        _character.transform.position = _characterInitialPosition;
         _hud.Initialize(this, _character.OnSwipe, _character.OnLeftDown, _character.OnRightDown, _character.OnButtonUp);
         // level init
         LevelData levelEntry = GameController.Instance.GetSelectedLevelData();
@@ -51,8 +58,7 @@ public class ScenarioController : MonoBehaviour
         _levelData.MaxHeight = GameController.Instance.DataLoader.GetLevelMaxHeight(levelEntry.Name);
         Debug.Log("Level " + _levelData.Name + " max height: " + _levelData.MaxHeight.ToString());
 
-        //var levelObj = GameObject.Instantiate(levelEntry.GamePrefab, _tilemapGrid.transform);
-        //levelObj.transform.localPosition = _levelLocalPosition;
+        _cameraPivotPosition.position = new Vector3(0.0f, 0.0f, -5.0f);
         _baseCameraPivotPos = _cameraPivotPosition.position;
         InitializeLevel();
         CurrentMaxHeight = 0.0f;
@@ -63,10 +69,14 @@ public class ScenarioController : MonoBehaviour
 
     private void InitializeLevel()
     {
-        if (_config == null)
+        if (_layerInstances.Count > 0)
         {
-            return;
+            foreach (var layer in _layerInstances)
+            {
+                Destroy(layer.gameObject);
+            }
         }
+        _layerInstances.Clear();
 
         int layerIndex = 0;
         float layerPosition = _startLayerPosition;
@@ -78,6 +88,7 @@ public class ScenarioController : MonoBehaviour
                 layerObj.transform.localPosition = new Vector3(0.0f, layerPosition, 0.0f);
                 PlatformLayerLogic logic = layerObj.GetComponent<PlatformLayerLogic>();
                 logic.Initialize(this, layerChunk, layerIndex, i);
+                _layerInstances.Add(logic);
                 layerPosition += 2.0f;
             }
 

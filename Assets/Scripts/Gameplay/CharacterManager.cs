@@ -49,6 +49,7 @@ public class CharacterManager : MonoBehaviour
 
         _rigidbody2D = GetComponent<Rigidbody2D>();
         _rigidbody2D.simulated = false;
+        _animator.SetBool(_deathAnimKey, false);
     }
 
     public void StartLevel()

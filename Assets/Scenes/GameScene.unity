@@ -174,7 +174,7 @@ MonoBehaviour:
   _coinPrefab: {fileID: 43162120, guid: 867d98c2dc85ca34c9010d4d8447e767, type: 3}
   _timeBonusPrefab: {fileID: 4277410480191113961, guid: 4feeedd274369f049857ceee68deaa21,
     type: 3}
-  _characterInitialPosition: {x: 0, y: -2.5}
+  _characterInitialPosition: {x: 0, y: -3}
   _cameraPivotPosition: {fileID: 1819794201}
   _catalogue: {fileID: 11400000, guid: 76d927c0fbb1e7147bae82857d6bf689, type: 2}
   _config: {fileID: 11400000, guid: 8776ffb4c343e7c4ca764ed031bf160c, type: 2}

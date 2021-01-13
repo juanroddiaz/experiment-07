@@ -93,11 +93,6 @@ public class HudGameplayController : MonoBehaviour
         _controlsPanel.SetActive(true);
     }
 
-    public void OnReplay()
-    {
-        GameController.Instance.SceneLoader.ReloadScene();
-    }
-
     public void OnBackToMainMenu()
     {
         _sceneController.TogglePause(false);
@@ -146,6 +141,12 @@ public class HudGameplayController : MonoBehaviour
         _sceneController.FinishLevel();
         _endLevelCoinsCounter.text = "x" + _sceneController.LevelHeight.ToString();
         _endLevelMaxCoinsCounter.text = "x" + _sceneController.GetMaxLevelCoins().ToString();
+    }
+
+    public void OnReplay()
+    {
+        // no scene reset
+        _sceneController.InitializeScene();
     }
 
     public void AddToGameplayUI(Transform t)
