@@ -22,9 +22,13 @@ public class BasePlatformLogic : MonoBehaviour
 
         if (collision.attachedRigidbody.velocity.y < 0.0f)
         {
-            Debug.Log("Collision! " + collision.gameObject.name);
             _layer.UpdateReachedLayerIndex(_firstTouched);
             _firstTouched = false;
+            OnTouched();
         }        
+    }
+
+    virtual protected void OnTouched()
+    { 
     }
 }

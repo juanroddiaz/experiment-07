@@ -91,9 +91,10 @@ GameObject:
   m_Component:
   - component: {fileID: 6861722669486521496}
   - component: {fileID: 6861722669486521498}
-  - component: {fileID: 6861722669486521497}
+  - component: {fileID: 2743946502478633903}
+  - component: {fileID: 4368774286881992039}
   m_Layer: 8
-  m_Name: BasePlatform_2
+  m_Name: BreakablePlatform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -142,7 +143,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.9, y: 0.2}
   m_EdgeRadius: 0
---- !u!114 &6861722669486521497
+--- !u!114 &2743946502478633903
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -151,9 +152,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 6861722669486521503}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62c27a3f49b48304da4b62ec00d741a6, type: 3}
+  m_Script: {fileID: 11500000, guid: a9ab2534657ce9849a56149ba8f3028d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _collider: {fileID: 6861722669486521498}
+  _animator: {fileID: 4368774286881992039}
+--- !u!95 &4368774286881992039
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6861722669486521503}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dacee924e84cb804eb5bc97d2d2933ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6861722669520881987
 GameObject:
   m_ObjectHideFlags: 0
