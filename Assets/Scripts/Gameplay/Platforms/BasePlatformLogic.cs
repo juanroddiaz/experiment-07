@@ -7,13 +7,13 @@ public class BasePlatformLogic : MonoBehaviour
     private PlatformLayerLogic _layer;
     private bool _firstTouched = false;
 
-    public void Initialize(PlatformLayerLogic layer)
+    virtual public void Initialize(PlatformLayerLogic layer)
     {
         _layer = layer;
         _firstTouched = true;
     }
 
-    public void OnTriggerEnter2D(Collider2D collision)
+    virtual public void OnTriggerEnter2D(Collider2D collision)
     {
         if (!_firstTouched)
         {

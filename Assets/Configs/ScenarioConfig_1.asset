@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ScenarioConfig_1
   m_EditorClassIdentifier: 
   LayersData:
-  - LayersAmount: 10
+  - LayersAmount: 2
     LowerDifficulty: 0
     UpperDifficulty: 0
   - LayersAmount: 10
