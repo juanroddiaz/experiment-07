@@ -24,7 +24,9 @@ public class HudGameplayController : MonoBehaviour
     private GameObject _gameplayPanel;
     [Header("Counters")]
     [SerializeField]
-    private TextMeshProUGUI _coinsCounter;
+    private TextMeshProUGUI _heightCounter;
+    [SerializeField]
+    private TextMeshProUGUI _platformCounter;
     [SerializeField]
     private TextMeshProUGUI _startLevelCountdown;
     [SerializeField]
@@ -36,7 +38,7 @@ public class HudGameplayController : MonoBehaviour
     private TextMeshProUGUI _endTitleText;
 
     private ScenarioController _sceneController;
-    private int _coinCounterVisualAmount = 0;
+    private int _platformCounterAmount = 0;
 
     private Action _onMovingLeftAction;
     private Action _onMovingRightAction;
@@ -59,6 +61,9 @@ public class HudGameplayController : MonoBehaviour
         _controlsPanel.SetActive(false);
         _endLevelPanel.SetActive(false);
         _startLevelPanel.SetActive(true);
+        UpdateHeightCounter(0);
+        _platformCounterAmount = 0;
+        UpdatePlatformCounter();
         StartCoroutine(StartLevelCountdown());
     }
 
@@ -104,17 +109,15 @@ public class HudGameplayController : MonoBehaviour
         _sceneController.OnQuit();
     }
 
-    public void UpdateHeightCounter(int add)
+    public void UpdateHeightCounter(int amount)
     {
-        _coinCounterVisualAmount = add;
-        _coinsCounter.text = _coinCounterVisualAmount.ToString();
-        //if (add > 1)
-        //{
-        //    _feedbackAnimation.Stop("ExtraCoins");
-        //    _extraCoinsCounter.text = "+" + add.ToString();
-        //    _extraCoinsCounter.gameObject.SetActive(true);
-        //    _feedbackAnimation.Play("ExtraCoins");
-        //}
+        _heightCounter.text = amount.ToString();
+    }
+
+    public void UpdatePlatformCounter()
+    {
+        _platformCounterAmount++;
+        _platformCounter.text = ": " + _platformCounterAmount.ToString();
     }
 
     public void OnLeftButtonDown()

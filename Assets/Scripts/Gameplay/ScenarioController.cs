@@ -71,7 +71,6 @@ public class ScenarioController : MonoBehaviour
         _baseCameraPivotPos = _cameraPivotPosition.position;
         InitializeLevel();
         CurrentMaxHeight = 0.0f;
-        _hud.UpdateHeightCounter(0);
         TogglePause(false);
         LevelStarted = false;
     }
@@ -119,6 +118,11 @@ public class ScenarioController : MonoBehaviour
 
     public void UpdateReachedLayerIndex(int index, bool platformFirstTouched)
     {
+        if (platformFirstTouched)
+        {
+            _hud.UpdatePlatformCounter();
+        }
+
         if (_currentReachedLayerIndex < index)
         {
             _currentReachedLayerIndex = index;
