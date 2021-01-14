@@ -28,11 +28,18 @@ public class ScenarioController : MonoBehaviour
     private Transform _layersParent;
     [SerializeField]
     private float _startLayerPosition = -2.0f;
+    [SerializeField]
+    private int _layerInstancesAmount = 20;
 
 
     private GameLevelData _levelData;
     private Vector3 _baseCameraPivotPos;
     private List<PlatformLayerLogic> _layerInstances = new List<PlatformLayerLogic>();
+    private float _currentLayerPosition = 0;
+    private int _currentReachedLayerIndex = 0;
+    private int _newLayerInstantiationIndex = 0;
+    private int _lastInstantiatedLayer = 0;
+    private int _lastInstantiatedChunk = 0;
 
     public float CurrentMaxHeight { get; private set; }
     public bool LevelStarted { get; private set; }
@@ -40,6 +47,8 @@ public class ScenarioController : MonoBehaviour
 
     private void Awake()
     {
+        // instantiated objects in scene, let's keep it without too many objects
+        _newLayerInstantiationIndex = _layerInstancesAmount / 2;
         InitializeScene();
     }
 
@@ -78,21 +87,74 @@ public class ScenarioController : MonoBehaviour
         }
         _layerInstances.Clear();
 
-        int layerIndex = 0;
-        float layerPosition = _startLayerPosition;
+        _currentReachedLayerIndex = 0;
+        _lastInstantiatedLayer = 0;
+        _lastInstantiatedChunk = 0;
+        _currentLayerPosition = _startLayerPosition;
         foreach (var layerChunk in _config.LayersData)
         {
             for (int i = 0; i < layerChunk.LayersAmount; i++)
             {
-                var layerObj = Instantiate(_layerPrefab, _layersParent);
-                layerObj.transform.localPosition = new Vector3(0.0f, layerPosition, 0.0f);
-                PlatformLayerLogic logic = layerObj.GetComponent<PlatformLayerLogic>();
-                logic.Initialize(this, layerChunk, layerIndex, i);
-                _layerInstances.Add(logic);
-                layerPosition += 2.0f;
+                CreateLayer(layerChunk);
+                if (_lastInstantiatedLayer >= _layerInstancesAmount)
+                {
+                    return;
+                }
             }
 
-            layerIndex++;
+            _lastInstantiatedChunk++;
+        }
+    }
+
+    private void CreateLayer(LayersChunkData layerChunk)
+    {
+        var layerObj = Instantiate(_layerPrefab, _layersParent);
+        layerObj.transform.localPosition = new Vector3(0.0f, _currentLayerPosition, 0.0f);
+        PlatformLayerLogic logic = layerObj.GetComponent<PlatformLayerLogic>();
+        logic.Initialize(this, layerChunk, _lastInstantiatedLayer);
+        _layerInstances.Add(logic);
+        _currentLayerPosition += 2.0f;
+        _lastInstantiatedLayer++;
+    }
+
+    public void UpdateReachedLayerIndex(int index, bool platformFirstTouched)
+    {
+        if (_currentReachedLayerIndex < index)
+        {
+            _currentReachedLayerIndex = index;
+            if (_currentReachedLayerIndex > _newLayerInstantiationIndex)
+            {
+                UpdateNewLayers();
+            }
+        }
+    }
+
+    private void UpdateNewLayers()
+    {
+        int chunkIndex = _lastInstantiatedChunk;
+        if (_config.LayersData.Count <= _lastInstantiatedChunk)
+        {
+            chunkIndex = _lastInstantiatedChunk - 1;
+        }
+
+        int currentLayersPerChunk = 0;
+        for(int i=0; i<=chunkIndex; i++)
+        {
+            currentLayersPerChunk += _config.LayersData[chunkIndex].LayersAmount;
+        }
+
+        Destroy(_layerInstances[0].gameObject);
+        _layerInstances.RemoveAt(0);
+        var chunk = _config.LayersData[chunkIndex];
+        CreateLayer(chunk);
+
+        // update chunk index
+        if (currentLayersPerChunk <= _lastInstantiatedLayer)
+        {
+            if (_config.LayersData.Count > _lastInstantiatedChunk)
+            {
+                _lastInstantiatedChunk++;
+            }
         }
     }
 
@@ -105,34 +167,6 @@ public class ScenarioController : MonoBehaviour
     {
         return _catalogue.Platforms.FindAll(x => x.Difficulty == difficulty);
     }
-
-    //private void CreateTimeBonusInCell(Vector3 place, int n, int p)
-    //{
-    //    var emptyCellObj = Instantiate(_timeBonusPrefab, _emptyCellsParent);
-    //    emptyCellObj.name = "Timecell_" + n.ToString() + "_" + p.ToString();
-    //    emptyCellObj.transform.position = place;
-    //    emptyCellObj.GetComponent<TimeObjectLogic>().Initialize(_hud, _timeBonusInSeconds, () => 
-    //    {
-    //        CreateCoinInCell(place, n, p);
-    //        CurrentLevelTime += _timeBonusInSeconds;
-    //    });
-    //}
-
-    //private void CreateSpikeInCell(Vector3 place, SpikeData spike)
-    //{
-    //    var emptyCellObj = Instantiate(_spikePrefab, _emptyCellsParent);
-    //    emptyCellObj.name = "Spike_" + spike.CellCoords.x.ToString() + "_" + spike.CellCoords.y.ToString();
-    //    emptyCellObj.transform.position = place;
-    //    emptyCellObj.GetComponent<SpikeObjectLogic>().Initialize(spike.Position);
-    //}
-
-    //private void CreateCoinInCell(Vector3 place, int n, int p)
-    //{
-    //    var emptyCellObj = Instantiate(_coinPrefab, _emptyCellsParent);
-    //    emptyCellObj.name = "cell_" + n.ToString() + "_" + p.ToString();
-    //    emptyCellObj.transform.position = place;
-    //    emptyCellObj.GetComponent<CoinObjectLogic>().Initialize(_hud);
-    //}
 
     public void StartLevel()
     {
@@ -189,18 +223,6 @@ public class ScenarioController : MonoBehaviour
             _baseCameraPivotPos.y = CurrentMaxHeight;
             _cameraPivotPosition.position = _baseCameraPivotPos;
         }
-
-
-        //CurrentMaxHeight -= Time.deltaTime;
-        //if (CurrentMaxHeight <= 0.0f)
-        //{
-        //    // end level
-        //    LevelStarted = false;
-        //    CurrentMaxHeight = 0.0f;
-        //}
-
-        // hud update time and check level end
-        //_hud.UpdateLevelCountdown(CurrentMaxHeight, !LevelStarted);
     }
 
     public void OnDeath()

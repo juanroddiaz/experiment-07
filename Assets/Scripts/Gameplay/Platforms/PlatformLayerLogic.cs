@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlatformLayerLogic : MonoBehaviour
-{ 
+{
     [SerializeField]
     private float _halfHorizontalSpace = 2.0f;
     [SerializeField]
@@ -14,8 +14,9 @@ public class PlatformLayerLogic : MonoBehaviour
     private List<Vector3> _platformPositions = new List<Vector3>();
     private PlatformDifficulty _minimumDifficulty;
     private PlatformDifficulty _maximumDifficulty;
+    private int _index = 0;
 
-    public void Initialize(ScenarioController controller, LayersChunkData data,  int layerChunkIndex, int index)
+    public void Initialize(ScenarioController controller, LayersChunkData data, int index)
     {
         _controller = controller;
         // get difficulty platforms amount
@@ -43,13 +44,14 @@ public class PlatformLayerLogic : MonoBehaviour
             logic.Initialize(this);
         }
 
-        gameObject.name = "Layer_" + layerChunkIndex + "_" + index; 
+        _index = index;
+        gameObject.name = "Layer_" + index;
     }
 
     private Vector3 GetPlatformPosition(int amount)
     {
         float x = -1.0f * _halfHorizontalSpace + _platformDistances.x * Random.Range(0, amount);
-        float y = -1.0f * _halfVerticalSpace +_platformDistances.y * Random.Range(0, amount);
+        float y = -1.0f * _halfVerticalSpace + _platformDistances.y * Random.Range(0, amount);
         if (_platformPositions.FindIndex(position => position.x == x && position.y == y) != -1)
         {
             return GetPlatformPosition(amount);
@@ -63,5 +65,10 @@ public class PlatformLayerLogic : MonoBehaviour
         _platformPositions.Add(ret + new Vector3(_platformDistances.x, 0.0f, 0.0f));
         _platformPositions.Add(ret + new Vector3(-1.0f * _platformDistances.x, 0.0f, 0.0f));
         return ret;
+    }
+
+    public void UpdateReachedLayerIndex(bool firstTouched)
+    {
+        _controller.UpdateReachedLayerIndex(_index, firstTouched);
     }
 }
