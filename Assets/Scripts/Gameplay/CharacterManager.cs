@@ -42,7 +42,7 @@ public class CharacterManager : MonoBehaviour
 
         var footData = new TriggerEventData
         {
-            TriggerEnterAction = OnFootTriggerEnter,
+            TriggerEnterAction = null,
             TriggerExitAction = null,
         };
         _footColliderLogic.Initialize(footData);
@@ -60,21 +60,6 @@ public class CharacterManager : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == LayerMask.NameToLayer("Coin"))
-        {
-            Debug.Log(other);
-            OnCoinCollected(other.transform.parent.GetComponent<CoinObjectLogic>());
-            return;
-        }
-
-        if (other.gameObject.layer == LayerMask.NameToLayer("Time"))
-        {
-            Debug.Log(other);
-            var timeLogic = other.transform.parent.GetComponent<TimeObjectLogic>();
-            timeLogic.OnCollected();
-            return;
-        }
-
         if (other.gameObject.layer == LayerMask.NameToLayer("Trap"))
         {
             Debug.Log("TRAP: " + other);
@@ -85,14 +70,7 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    private void OnCoinCollected(CoinObjectLogic coinLogic)
-    {
-        //Debug.Log(coinLogic.gameObject.name);
-        var coinsCollected = coinLogic.OnCollected(_sceneController.LevelHeight);
-        _sceneController.OnCoinCollected(coinsCollected);
-    }
-
-    private void OnFootTriggerEnter(Transform t)
+    public void OnPlatformLanding()
     {
         var _speed = _rigidbody2D.velocity;
         if (_speed.y < 0.0f)

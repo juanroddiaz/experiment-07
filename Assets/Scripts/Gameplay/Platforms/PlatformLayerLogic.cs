@@ -71,4 +71,9 @@ public class PlatformLayerLogic : MonoBehaviour
     {
         _controller.UpdateReachedLayerIndex(_index, firstTouched);
     }
+
+    public void TriggerPlayerJump()
+    {
+        _controller.TriggerPlayerJump();
+    }
 }

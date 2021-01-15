@@ -5,7 +5,7 @@ using UnityEngine;
 public class BasePlatformLogic : MonoBehaviour
 {
     private PlatformLayerLogic _layer;
-    private bool _firstTouched = false;
+    private bool _firstTouched = true;
 
     virtual public void Initialize(PlatformLayerLogic layer)
     {
@@ -15,20 +15,20 @@ public class BasePlatformLogic : MonoBehaviour
 
     virtual public void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!_firstTouched)
-        {
-            return;
-        }
-
         if (collision.attachedRigidbody.velocity.y < 0.0f)
         {
-            _layer.UpdateReachedLayerIndex(_firstTouched);
-            _firstTouched = false;
+            if (_firstTouched)
+            {
+                _layer.UpdateReachedLayerIndex(true);
+                _firstTouched = false;
+            }
+            
             OnTouched();
         }        
     }
 
     virtual protected void OnTouched()
-    { 
+    {
+        _layer.TriggerPlayerJump();
     }
 }

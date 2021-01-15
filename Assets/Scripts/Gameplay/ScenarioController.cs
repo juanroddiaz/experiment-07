@@ -12,14 +12,12 @@ public class ScenarioController : MonoBehaviour
     [SerializeField]
     private GameObject _layerPrefab;
     [SerializeField]
-    private CoinObjectLogic _coinPrefab;
-    [SerializeField]
-    private TimeObjectLogic _timeBonusPrefab;
-    [SerializeField]
     private Vector2 _characterInitialPosition;
     [SerializeField]
     private Transform _cameraPivotPosition;
     [Header("Platforms")]
+    [SerializeField]
+    private BasePlatformLogic _initialPlatform;
     [SerializeField]
     private PlatformCatalogue _catalogue;
     [SerializeField]
@@ -111,6 +109,10 @@ public class ScenarioController : MonoBehaviour
         layerObj.transform.localPosition = new Vector3(0.0f, _currentLayerPosition, 0.0f);
         PlatformLayerLogic logic = layerObj.GetComponent<PlatformLayerLogic>();
         logic.Initialize(this, layerChunk, _lastInstantiatedLayer);
+        if (_layerInstances.Count == 0)
+        {
+            _initialPlatform.Initialize(logic);
+        }
         _layerInstances.Add(logic);
         _currentLayerPosition += 2.0f;
         _lastInstantiatedLayer++;
@@ -172,6 +174,11 @@ public class ScenarioController : MonoBehaviour
         return _catalogue.Platforms.FindAll(x => x.Difficulty == difficulty);
     }
 
+    public void TriggerPlayerJump()
+    {
+        _character.OnPlatformLanding();
+    }
+
     public void StartLevel()
     {
         LevelStarted = true;
@@ -193,7 +200,7 @@ public class ScenarioController : MonoBehaviour
         }
     }
 
-    public int GetMaxLevelCoins()
+    public int GetMaxHeight()
     {
         return _levelData.MaxHeight;
     }
@@ -202,11 +209,6 @@ public class ScenarioController : MonoBehaviour
     {
         // cheap but effective
         Time.timeScale = toggle ? 0.0f : 1.0f;
-    }
-
-    public void OnCoinCollected(int amount)
-    {
-        LevelHeight += amount;
     }
 
     private void Update()

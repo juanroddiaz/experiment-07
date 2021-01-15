@@ -13,5 +13,6 @@ public class BreakablePlatformLogic : BasePlatformLogic
     {
         _collider.enabled = false;
         _animator.SetBool("Touched", true);
+        base.OnTouched();
     }
 }
