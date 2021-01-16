@@ -127,15 +127,16 @@ public class ScenarioController : MonoBehaviour
 
         if (_currentReachedLayerIndex < index)
         {
+            int diff = index - _currentReachedLayerIndex;
             _currentReachedLayerIndex = index;
             if (_currentReachedLayerIndex > _newLayerInstantiationIndex)
             {
-                UpdateNewLayers();
+                UpdateNewLayers(diff);
             }
         }
     }
 
-    private void UpdateNewLayers()
+    private void UpdateNewLayers(int newLayersAmount)
     {
         int chunkIndex = _lastInstantiatedChunk;
         if (_config.LayersData.Count <= _lastInstantiatedChunk)
@@ -149,17 +150,19 @@ public class ScenarioController : MonoBehaviour
             currentLayersPerChunk += _config.LayersData[chunkIndex].LayersAmount;
         }
 
-        Destroy(_layerInstances[0].gameObject);
-        _layerInstances.RemoveAt(0);
-        var chunk = _config.LayersData[chunkIndex];
-        CreateLayer(chunk);
-
-        // update chunk index
-        if (currentLayersPerChunk <= _lastInstantiatedLayer)
+        for (int i = 0; i < newLayersAmount; i++)
         {
-            if (_config.LayersData.Count > _lastInstantiatedChunk)
+            Destroy(_layerInstances[0].gameObject);
+            _layerInstances.RemoveAt(0);
+            var chunk = _config.LayersData[chunkIndex];
+            CreateLayer(chunk);
+            // update chunk index
+            if (currentLayersPerChunk <= _lastInstantiatedLayer)
             {
-                _lastInstantiatedChunk++;
+                if (_config.LayersData.Count > _lastInstantiatedChunk)
+                {
+                    _lastInstantiatedChunk++;
+                }
             }
         }
     }
