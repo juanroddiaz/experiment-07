@@ -7,6 +7,7 @@ public class GameLevelData
 {
     public string Name = "";
     public int MaxHeight = 0;
+    public int MaxPlatforms = 0;
 }
 
 public class GameDataLoader : MonoBehaviour
@@ -27,7 +28,8 @@ public class GameDataLoader : MonoBehaviour
             {
                 GameData.Add(new GameLevelData {
                     Name = name,
-                    MaxHeight = PlayerPrefs.GetInt(name)
+                    MaxHeight = PlayerPrefs.GetInt(name + "_height"),
+                    MaxPlatforms = PlayerPrefs.GetInt(name + "_platforms"),
                 });
             }
         }
@@ -44,18 +46,18 @@ public class GameDataLoader : MonoBehaviour
         }
     }
 
-    public int GetLevelMaxHeight(string levelName)
+    public GameLevelData GetLevelMaxData(string levelName)
     {
-        var key = GameData.Find(k => string.Equals(k.Name, levelName));
-        if (key == null)
+        var entry = GameData.Find(k => string.Equals(k.Name, levelName));
+        if (entry == null)
         {
             Debug.Log("No data for level " + levelName);
-            return 0;
+            return new GameLevelData();
         }
-        return key.MaxHeight;
+        return entry;
     }
 
-    public bool TrySaveLevelMaxCoins(GameLevelData data)
+    public bool TrySaveLevelMaxRecord(GameLevelData data)
     {
         var key = GameData.Find(k => string.Equals(k.Name, data.Name));
         if (key == null)
@@ -63,23 +65,31 @@ public class GameDataLoader : MonoBehaviour
             GameData.Add(new GameLevelData
             {
                 Name = data.Name,
-                MaxHeight = data.MaxHeight
+                MaxHeight = data.MaxHeight,
+                MaxPlatforms = data.MaxPlatforms,
             });
 
             // save
-            PlayerPrefs.SetInt(data.Name, data.MaxHeight);
+            PlayerPrefs.SetInt(data.Name + "_height", data.MaxHeight);
+            PlayerPrefs.SetInt(data.Name + "_platforms", data.MaxPlatforms);
             return true;
         }
 
+        bool dataSaved = false;
         if (key.MaxHeight < data.MaxHeight)
         {
             key.MaxHeight = data.MaxHeight;
-            // save
-            PlayerPrefs.SetInt(data.Name, data.MaxHeight);
-            return true;
+            PlayerPrefs.SetInt(data.Name + "_height", data.MaxHeight);
+            dataSaved = true;
+        }
+        if (key.MaxPlatforms < data.MaxPlatforms)
+        {
+            key.MaxPlatforms = data.MaxPlatforms;
+            PlayerPrefs.SetInt(data.Name + "_platforms", data.MaxPlatforms);
+            dataSaved = true;
         }
 
-        return false;
+        return dataSaved;
     }
 
     public void DeleteData()
@@ -87,7 +97,9 @@ public class GameDataLoader : MonoBehaviour
         foreach (var data in GameData)
         {
             data.MaxHeight = 0;
-            PlayerPrefs.SetInt(data.Name, 0);
+            data.MaxPlatforms = 0;
+            PlayerPrefs.SetInt(data.Name + "_height", data.MaxHeight);
+            PlayerPrefs.SetInt(data.Name + "_platforms", data.MaxPlatforms);
         }
         SaveLastSelectedLevel(0);
         SaveMusicOnOption(true);

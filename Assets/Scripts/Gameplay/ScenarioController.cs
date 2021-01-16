@@ -39,9 +39,9 @@ public class ScenarioController : MonoBehaviour
     private int _lastInstantiatedLayer = 0;
     private int _lastInstantiatedChunk = 0;
 
-    public float CurrentMaxHeight { get; private set; }
+    public int CurrentHeight { get; private set; }
     public bool LevelStarted { get; private set; }
-    public int LevelHeight { get; private set; }
+    public int CurrentPlatforms { get; private set; }
 
     private void Awake()
     {
@@ -57,18 +57,14 @@ public class ScenarioController : MonoBehaviour
         _hud.Initialize(this, _character.OnSwipe, _character.OnLeftDown, _character.OnRightDown, _character.OnButtonUp);
         // level init
         LevelData levelEntry = GameController.Instance.GetSelectedLevelData();
-        _levelData = new GameLevelData
-        {
-            Name = levelEntry.Name,
-            MaxHeight = 0
-        };
-        _levelData.MaxHeight = GameController.Instance.DataLoader.GetLevelMaxHeight(levelEntry.Name);
+        _levelData = GameController.Instance.DataLoader.GetLevelMaxData(levelEntry.Name);
         Debug.Log("Level " + _levelData.Name + " max height: " + _levelData.MaxHeight.ToString());
 
         _cameraPivotPosition.position = new Vector3(0.0f, 0.0f, -5.0f);
         _baseCameraPivotPos = _cameraPivotPosition.position;
         InitializeLevel();
-        CurrentMaxHeight = 0.0f;
+        CurrentHeight = 0;
+        CurrentPlatforms = 0;
         TogglePause(false);
         LevelStarted = false;
     }
@@ -122,6 +118,7 @@ public class ScenarioController : MonoBehaviour
     {
         if (platformFirstTouched)
         {
+            CurrentPlatforms++;
             _hud.UpdatePlatformCounter();
         }
 
@@ -193,19 +190,26 @@ public class ScenarioController : MonoBehaviour
     {
         GameController.Instance.ToggleCurrentLevelMusic(false);
         TogglePause(true);
-        if (GameController.Instance.DataLoader.TrySaveLevelMaxCoins(new GameLevelData
+        if (GameController.Instance.DataLoader.TrySaveLevelMaxRecord(new GameLevelData
         {
             Name = _levelData.Name,
-            MaxHeight = LevelHeight
+            MaxHeight = CurrentHeight,
+            MaxPlatforms = CurrentPlatforms,
         }))
         {
-            _levelData.MaxHeight = LevelHeight;
+            _levelData.MaxHeight = CurrentHeight;
+            _levelData.MaxPlatforms = CurrentPlatforms;
         }
     }
 
     public int GetMaxHeight()
     {
         return _levelData.MaxHeight;
+    }
+
+    public int GetMaxPlatforms()
+    {
+        return _levelData.MaxPlatforms;
     }
 
     public void TogglePause(bool toggle)
@@ -221,15 +225,16 @@ public class ScenarioController : MonoBehaviour
             return;
         }
 
-        if (_character.transform.position.y >= CurrentMaxHeight)
+        var intHeight = Mathf.FloorToInt(_character.transform.position.y);
+        if (intHeight >= CurrentHeight)
         {
-            CurrentMaxHeight = _character.transform.position.y;
-            _hud.UpdateHeightCounter(Mathf.FloorToInt(CurrentMaxHeight));
+            CurrentHeight = intHeight;
+            _hud.UpdateHeightCounter(CurrentHeight);
         }
 
-        if (_cameraPivotPosition.position.y <= CurrentMaxHeight)
+        if (_cameraPivotPosition.position.y <= CurrentHeight)
         {
-            _baseCameraPivotPos.y = CurrentMaxHeight;
+            _baseCameraPivotPos.y = CurrentHeight;
             _cameraPivotPosition.position = _baseCameraPivotPos;
         }
     }

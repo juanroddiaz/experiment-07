@@ -29,10 +29,15 @@ public class HudGameplayController : MonoBehaviour
     private TextMeshProUGUI _platformCounter;
     [SerializeField]
     private TextMeshProUGUI _startLevelCountdown;
+    [Header("EndGame Info")]
     [SerializeField]
-    private TextMeshProUGUI _endLevelCoinsCounter;
+    private TextMeshProUGUI _endLevelHeightCounter;
     [SerializeField]
-    private TextMeshProUGUI _endLevelMaxCoinsCounter;
+    private TextMeshProUGUI _endLevelPlatformCounter;
+    [SerializeField]
+    private TextMeshProUGUI _endLevelMaxHeightCounter;
+    [SerializeField]
+    private TextMeshProUGUI _endLevelMaxPlatformCounter;
     [Header("Feedback")]
     [SerializeField]
     private TextMeshProUGUI _endTitleText;
@@ -63,7 +68,7 @@ public class HudGameplayController : MonoBehaviour
         _startLevelPanel.SetActive(true);
         UpdateHeightCounter(0);
         _platformCounterAmount = 0;
-        UpdatePlatformCounter();
+        _platformCounter.text = ": 0";
         StartCoroutine(StartLevelCountdown());
     }
 
@@ -142,8 +147,11 @@ public class HudGameplayController : MonoBehaviour
         _controlsPanel.SetActive(false);
         _endLevelPanel.SetActive(true);
         _sceneController.FinishLevel();
-        _endLevelCoinsCounter.text = "x" + _sceneController.LevelHeight.ToString();
-        _endLevelMaxCoinsCounter.text = "x" + _sceneController.GetMaxHeight().ToString();
+
+        _endLevelHeightCounter.text = _sceneController.CurrentHeight.ToString();
+        _endLevelPlatformCounter.text = " : " + _sceneController.CurrentPlatforms.ToString();
+        _endLevelMaxHeightCounter.text = _sceneController.GetMaxHeight().ToString();
+        _endLevelMaxPlatformCounter.text = " : " + _sceneController.GetMaxPlatforms().ToString();
     }
 
     public void OnReplay()

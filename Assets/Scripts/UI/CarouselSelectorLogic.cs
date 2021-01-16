@@ -228,7 +228,8 @@ public class CarouselSelectorLogic : MonoBehaviour
     {
         string levelName = GameController.Instance.GetLevelNameByIdx(CurrentIndex);
         _title.text = levelName;
-        _bestHeightCounter.text = "x" + GameController.Instance.DataLoader.GetLevelMaxHeight(levelName).ToString();
+        var worldData = GameController.Instance.DataLoader.GetLevelMaxData(levelName);
+        _bestHeightCounter.text = "x" + worldData.MaxHeight.ToString();
         _rightArrowImage.enabled = CurrentIndex != (_images.Count - 1);
         _leftArrowImage.enabled = CurrentIndex != 0;
     }
