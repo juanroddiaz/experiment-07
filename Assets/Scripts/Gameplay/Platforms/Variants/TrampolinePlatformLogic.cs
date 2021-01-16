@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakablePlatformLogic : BasePlatformLogic
+public class TrampolinePlatformLogic : BasePlatformLogic
 {
-    [SerializeField]
-    private Collider2D _collider;
     [SerializeField]
     private Animator _animator;
 
     protected override void OnTouched(bool boosted = false)
     {
-        _collider.enabled = false;
         _animator.SetBool("Touched", true);
-        base.OnTouched(false);
+        base.OnTouched(true);
     }
 }

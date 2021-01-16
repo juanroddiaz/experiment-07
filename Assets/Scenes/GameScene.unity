@@ -178,7 +178,7 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: 8776ffb4c343e7c4ca764ed031bf160c, type: 2}
   _layersParent: {fileID: 626499411}
   _startLayerPosition: -2
-  _layerInstancesAmount: 10
+  _layerInstancesAmount: 16
 --- !u!1001 &7081309
 PrefabInstance:
   m_ObjectHideFlags: 0

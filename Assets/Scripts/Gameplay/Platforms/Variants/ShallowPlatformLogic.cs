@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BreakablePlatformLogic : BasePlatformLogic
+public class ShallowPlatformLogic : BasePlatformLogic
 {
     [SerializeField]
     private Collider2D _collider;
@@ -12,7 +12,6 @@ public class BreakablePlatformLogic : BasePlatformLogic
     protected override void OnTouched(bool boosted = false)
     {
         _collider.enabled = false;
-        _animator.SetBool("Touched", true);
-        base.OnTouched(false);
+        _animator.SetBool("Touched", true);        
     }
 }

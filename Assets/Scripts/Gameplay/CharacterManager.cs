@@ -14,6 +14,8 @@ public class CharacterManager : MonoBehaviour
     [SerializeField]
     private float _jumpSpeed = 7.5f;
     [SerializeField]
+    private float _jumpBoostFactor = 1.5f;
+    [SerializeField]
     private float _wallSlideSpeed = -1.0f;
 
     public bool IsGrounded { get; private set; }
@@ -23,6 +25,7 @@ public class CharacterManager : MonoBehaviour
 
     private Rigidbody2D _rigidbody2D;
     private bool _mustJump = false;
+    private bool _boostedJump = false;
     private bool _goingLeft = false;
     private bool _goingRight = false;
     private bool _moving = false;
@@ -70,12 +73,13 @@ public class CharacterManager : MonoBehaviour
         }
     }
 
-    public void OnPlatformLanding()
+    public void OnPlatformLanding(bool boosted)
     {
         var _speed = _rigidbody2D.velocity;
         if (_speed.y < 0.0f)
         {
             _mustJump = true;
+            _boostedJump = boosted;
             return;
         }
     }
@@ -136,6 +140,10 @@ public class CharacterManager : MonoBehaviour
         if (_mustJump)
         {
             _speed.y = _jumpSpeed;
+            if (_boostedJump)
+            {
+                _speed.y *= _jumpBoostFactor;
+            }
             IsJumping = true;
             IsFalling = false;
             _animator.SetBool(_jumpAnimKey, true);

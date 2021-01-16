@@ -158,6 +158,7 @@ MonoBehaviour:
   _footColliderLogic: {fileID: 5378962291154956780}
   _moveSpeed: 3
   _jumpSpeed: 8.75
+  _jumpBoostFactor: 1.25
   _wallSlideSpeed: 0
 --- !u!50 &1662287353879820325
 Rigidbody2D:

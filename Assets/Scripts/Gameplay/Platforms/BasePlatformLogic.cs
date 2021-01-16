@@ -27,8 +27,8 @@ public class BasePlatformLogic : MonoBehaviour
         }        
     }
 
-    virtual protected void OnTouched()
+    virtual protected void OnTouched(bool boosted = false)
     {
-        _layer.TriggerPlayerJump();
+        _layer.TriggerPlayerJump(boosted);
     }
 }

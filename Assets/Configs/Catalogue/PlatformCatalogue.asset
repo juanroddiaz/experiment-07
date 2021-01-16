@@ -22,6 +22,12 @@ MonoBehaviour:
   - Name: 
     Difficulty: 1
     Asset: {fileID: 6861722669486521503, guid: 614945cb5dd1c0a488ac2b33b2503cf5, type: 3}
+  - Name: 
+    Difficulty: 2
+    Asset: {fileID: 6861722669486521503, guid: b675175e468a9554abb25fbb3d62f369, type: 3}
+  - Name: 
+    Difficulty: 1
+    Asset: {fileID: 6861722669486521503, guid: 1590782feaa8f0d4bb2aa64baa14bbbb, type: 3}
   LayerData:
   - Difficulty: 0
     Amount: 5

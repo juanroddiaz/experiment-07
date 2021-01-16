@@ -174,9 +174,9 @@ public class ScenarioController : MonoBehaviour
         return _catalogue.Platforms.FindAll(x => x.Difficulty == difficulty);
     }
 
-    public void TriggerPlayerJump()
+    public void TriggerPlayerJump(bool boosted)
     {
-        _character.OnPlatformLanding();
+        _character.OnPlatformLanding(boosted);
     }
 
     public void StartLevel()
