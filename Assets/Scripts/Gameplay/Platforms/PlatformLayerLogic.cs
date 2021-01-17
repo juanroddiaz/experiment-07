@@ -21,7 +21,7 @@ public class PlatformLayerLogic : MonoBehaviour
         _minimumDifficulty = data.LowerDifficulty;
         _maximumDifficulty = data.UpperDifficulty;
 
-        int amount = 4;
+        int amount = 0;
         List<PlatformConfig> platforms = new List<PlatformConfig>();
         // if different, get a random amount between the two
         if (_minimumDifficulty <= _maximumDifficulty)
@@ -31,7 +31,7 @@ public class PlatformLayerLogic : MonoBehaviour
             {
                 PlatformDifficulty difficulty = (_minimumDifficulty + i);
                 Debug.Log("Layer " + index + ": difficulty " + difficulty);
-                //amount = Random.Range(_controller.GetPlatformAmountByDifficulty(difficulty), amount);
+                amount = Random.Range(_controller.GetPlatformAmountByDifficulty(difficulty), amount);
                 platforms.AddRange(_controller.GetPlatformsByDifficulty(difficulty));
             }
         }
@@ -46,6 +46,11 @@ public class PlatformLayerLogic : MonoBehaviour
             platform.transform.localPosition = GetPlatformPosition(amount);
             BasePlatformLogic logic = platform.GetComponent<BasePlatformLogic>();
             logic.Initialize(this);
+            if (logic.IsTrap)
+            {
+                platforms.Remove(randomPlatform);
+                totalPlatformsAmount--;
+            }
         }
 
         _index = index;
@@ -54,8 +59,9 @@ public class PlatformLayerLogic : MonoBehaviour
 
     private Vector3 GetPlatformPosition(int amount)
     {
+        int verticalSlot = Random.Range(0, amount);
+        float y = -1.0f * _halfVerticalSpace + _platformDistances.y * verticalSlot;
         float x = -1.0f * _halfHorizontalSpace + _platformDistances.x * Random.Range(0, amount);
-        float y = -1.0f * _halfVerticalSpace + _platformDistances.y * Random.Range(0, amount);
         if (_platformPositions.FindIndex(position => position.x == x && position.y == y) != -1)
         {
             return GetPlatformPosition(amount);

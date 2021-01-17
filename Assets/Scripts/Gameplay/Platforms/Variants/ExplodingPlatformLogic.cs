@@ -8,6 +8,12 @@ public class ExplodingPlatformLogic : BasePlatformLogic
     private Collider2D _collider;
     [SerializeField]
     private Animator _animator;
+    
+    public override void Initialize(PlatformLayerLogic layer)
+    {
+        IsTrap = true;
+        base.Initialize(layer);
+    }
 
     protected override void OnTouched(bool boosted = false)
     {

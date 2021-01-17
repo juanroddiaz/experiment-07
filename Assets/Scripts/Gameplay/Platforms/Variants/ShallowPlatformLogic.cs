@@ -9,6 +9,12 @@ public class ShallowPlatformLogic : BasePlatformLogic
     [SerializeField]
     private Animator _animator;
 
+    public override void Initialize(PlatformLayerLogic layer)
+    {
+        IsTrap = true;
+        base.Initialize(layer);
+    }
+
     protected override void OnTouched(bool boosted = false)
     {
         _collider.enabled = false;

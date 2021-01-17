@@ -6,6 +6,7 @@ public class BasePlatformLogic : MonoBehaviour
 {
     protected PlatformLayerLogic _layer;
     private bool _firstTouched = true;
+    public bool IsTrap = false;
 
     virtual public void Initialize(PlatformLayerLogic layer)
     {
