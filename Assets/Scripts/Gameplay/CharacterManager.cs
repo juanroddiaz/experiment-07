@@ -65,12 +65,15 @@ public class CharacterManager : MonoBehaviour
     {
         if (other.gameObject.layer == LayerMask.NameToLayer("Trap"))
         {
-            Debug.Log("TRAP: " + other);
-            SetAnimations(false, false, false, false);
-            _animator.SetBool(_deathAnimKey, true);
-            _sceneController.OnDeath();
-            return;
+            OnTrapLanding();
         }
+    }
+
+    public void OnTrapLanding()
+    {
+        SetAnimations(false, false, false, false);
+        _animator.SetBool(_deathAnimKey, true);
+        _sceneController.OnDeath();
     }
 
     public void OnPlatformLanding(bool boosted)

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BasePlatformLogic : MonoBehaviour
 {
-    private PlatformLayerLogic _layer;
+    protected PlatformLayerLogic _layer;
     private bool _firstTouched = true;
 
     virtual public void Initialize(PlatformLayerLogic layer)

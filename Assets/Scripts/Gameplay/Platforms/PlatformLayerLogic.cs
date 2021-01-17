@@ -76,4 +76,9 @@ public class PlatformLayerLogic : MonoBehaviour
     {
         _controller.TriggerPlayerJump(boosted);
     }
+
+    public void TriggerPlayerDeath()
+    {
+        _controller.TriggerPlayerDeath();
+    }
 }

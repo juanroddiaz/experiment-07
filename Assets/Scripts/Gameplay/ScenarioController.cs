@@ -21,15 +21,13 @@ public class ScenarioController : MonoBehaviour
     [SerializeField]
     private PlatformCatalogue _catalogue;
     [SerializeField]
-    private ScenarioConfig _config;
-    [SerializeField]
     private Transform _layersParent;
     [SerializeField]
     private float _startLayerPosition = -2.0f;
     [SerializeField]
     private int _layerInstancesAmount = 20;
 
-
+    private ScenarioConfig _config;
     private GameLevelData _levelData;
     private Vector3 _baseCameraPivotPos;
     private List<PlatformLayerLogic> _layerInstances = new List<PlatformLayerLogic>();
@@ -59,7 +57,7 @@ public class ScenarioController : MonoBehaviour
         LevelData levelEntry = GameController.Instance.GetSelectedLevelData();
         _levelData = GameController.Instance.DataLoader.GetLevelMaxData(levelEntry.Name);
         Debug.Log("Level " + _levelData.Name + " max height: " + _levelData.MaxHeight.ToString());
-
+        _config = levelEntry.SceneConfig;
         _cameraPivotPosition.position = new Vector3(0.0f, 0.0f, -5.0f);
         _baseCameraPivotPos = _cameraPivotPosition.position;
         InitializeLevel();
@@ -177,6 +175,11 @@ public class ScenarioController : MonoBehaviour
     public void TriggerPlayerJump(bool boosted)
     {
         _character.OnPlatformLanding(boosted);
+    }
+
+    public void TriggerPlayerDeath()
+    {
+        _character.OnTrapLanding();
     }
 
     public void StartLevel()

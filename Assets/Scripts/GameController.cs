@@ -6,7 +6,7 @@ using UnityEngine;
 public class LevelData
 {
     public string Name;
-    public GameObject GamePrefab;
+    public ScenarioConfig SceneConfig;
     public Sprite MenuImage;
     //public Vector2 TimeBonusCellPosition;
     public AudioClip Music;

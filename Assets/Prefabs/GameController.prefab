@@ -195,53 +195,18 @@ MonoBehaviour:
   _audioListener: {fileID: 0}
   _menuMusic: {fileID: 8300000, guid: ee31524d83dedea4599aadd8826f618d, type: 3}
   _levelData:
-  - Name: CAVE MAZE
-    GamePrefab: {fileID: 5809674223240184577, guid: 4d9fef59f4abd034091ed3e3a868dfd8,
-      type: 3}
+  - Name: JUMP N CHiLL
+    SceneConfig: {fileID: 11400000, guid: 8776ffb4c343e7c4ca764ed031bf160c, type: 2}
     MenuImage: {fileID: 21300000, guid: cb7bc1714d2c2994b8f6b4e3cfef5b1a, type: 3}
-    TimeBonusCellPosition: {x: -8, y: 3}
     Music: {fileID: 8300000, guid: dd79d504c5876be41ac539fb1ca04b3e, type: 3}
-    SpikesPosition: []
-  - Name: ANOTHER CAVE MAZE
-    GamePrefab: {fileID: 5809674223240184577, guid: e7070f8333583fb4ea42f585255f07cd,
-      type: 3}
+  - Name: FALL BOYS AND GIRLS
+    SceneConfig: {fileID: 11400000, guid: 3af3492603e2c7546ad5db69909b0fa8, type: 2}
     MenuImage: {fileID: 21300000, guid: 131d34c9cee78824a9c48876530c40b4, type: 3}
-    TimeBonusCellPosition: {x: 6, y: 3}
     Music: {fileID: 8300000, guid: 30b992bc019b2b448a220dc13aeef024, type: 3}
-    SpikesPosition: []
-  - Name: DANGEROUS CAVE MAZE
-    GamePrefab: {fileID: 5809674223240184577, guid: 4cedd9598675d414cb2185330698a56a,
-      type: 3}
+  - Name: PREPARE TO DIE
+    SceneConfig: {fileID: 11400000, guid: 1ab0d0b84bbf0e3448c4a5274f4819ab, type: 2}
     MenuImage: {fileID: 21300000, guid: 0cd212bf2bcb857429a55d4e64d18c88, type: 3}
-    TimeBonusCellPosition: {x: 8, y: 3}
     Music: {fileID: 8300000, guid: e7712347e67275d40ac030b62e21f576, type: 3}
-    SpikesPosition:
-    - CellCoords: {x: 7, y: 4}
-      Position: 2
-    - CellCoords: {x: 8, y: 4}
-      Position: 2
-    - CellCoords: {x: 9, y: 4}
-      Position: 2
-    - CellCoords: {x: 2, y: -3}
-      Position: 3
-    - CellCoords: {x: 3, y: -3}
-      Position: 3
-    - CellCoords: {x: 4, y: -3}
-      Position: 3
-    - CellCoords: {x: 7, y: -3}
-      Position: 3
-    - CellCoords: {x: 8, y: -3}
-      Position: 3
-    - CellCoords: {x: 9, y: -3}
-      Position: 3
-    - CellCoords: {x: 2, y: 4}
-      Position: 2
-    - CellCoords: {x: 4, y: 4}
-      Position: 2
-    - CellCoords: {x: 3, y: 4}
-      Position: 2
-    - CellCoords: {x: -1, y: -3}
-      Position: 1
 --- !u!114 &557154310284055203
 MonoBehaviour:
   m_ObjectHideFlags: 0
