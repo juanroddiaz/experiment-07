@@ -4,10 +4,8 @@ using UnityEngine;
 
 public class PlatformLayerLogic : MonoBehaviour
 {
-    [SerializeField]
     private float _halfHorizontalSpace = 2.0f;
-    [SerializeField]
-    private float _halfVerticalSpace = 0.5f;
+    private float _halfVerticalSpace = 0.4f;
 
     private ScenarioController _controller;
     private Vector2 _platformDistances = Vector2.zero;
@@ -23,13 +21,19 @@ public class PlatformLayerLogic : MonoBehaviour
         _minimumDifficulty = data.LowerDifficulty;
         _maximumDifficulty = data.UpperDifficulty;
 
-        int amount = _controller.GetPlatformAmountByDifficulty(_minimumDifficulty);
-        List<PlatformConfig> platforms = _controller.GetPlatformsByDifficulty(_minimumDifficulty);
+        int amount = 4;
+        List<PlatformConfig> platforms = new List<PlatformConfig>();
         // if different, get a random amount between the two
-        if (_minimumDifficulty != _maximumDifficulty)
+        if (_minimumDifficulty <= _maximumDifficulty)
         {
-            amount = Random.Range(_controller.GetPlatformAmountByDifficulty(_maximumDifficulty), amount);
-            platforms.AddRange(_controller.GetPlatformsByDifficulty(_maximumDifficulty));
+            int diff = _maximumDifficulty - _minimumDifficulty;
+            for (int i = 0; i <= diff; i++)
+            {
+                PlatformDifficulty difficulty = (_minimumDifficulty + i);
+                Debug.Log("Layer " + index + ": difficulty " + difficulty);
+                //amount = Random.Range(_controller.GetPlatformAmountByDifficulty(difficulty), amount);
+                platforms.AddRange(_controller.GetPlatformsByDifficulty(difficulty));
+            }
         }
 
         // instantiate platforms between the position constrains

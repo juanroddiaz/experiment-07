@@ -14,8 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   LayersData:
   - LayersAmount: 10
-    LowerDifficulty: 1
+    LowerDifficulty: 0
     UpperDifficulty: 1
+  - LayersAmount: 10
+    LowerDifficulty: 0
+    UpperDifficulty: 2
   - LayersAmount: 10
     LowerDifficulty: 1
     UpperDifficulty: 2
