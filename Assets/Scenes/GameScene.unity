@@ -175,7 +175,6 @@ MonoBehaviour:
   _cameraPivotPosition: {fileID: 1819794201}
   _initialPlatform: {fileID: 577700588}
   _catalogue: {fileID: 11400000, guid: 76d927c0fbb1e7147bae82857d6bf689, type: 2}
-  _config: {fileID: 11400000, guid: 8776ffb4c343e7c4ca764ed031bf160c, type: 2}
   _layersParent: {fileID: 626499411}
   _startLayerPosition: -2
   _layerInstancesAmount: 10

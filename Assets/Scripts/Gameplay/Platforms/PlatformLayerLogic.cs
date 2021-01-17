@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlatformLayerLogic : MonoBehaviour
 {
-    private float _halfHorizontalSpace = 2.0f;
+    private float _halfHorizontalSpace = 1.75f;
     private float _halfVerticalSpace = 0.4f;
 
     private ScenarioController _controller;
