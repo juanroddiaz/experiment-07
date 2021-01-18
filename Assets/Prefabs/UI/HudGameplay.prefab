@@ -87,9 +87,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a3074865e6f6a4f832c282db3bff0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwipeMinDuration: 0.1
+  SwipeMinDuration: 0.05
   SwipeMaxDuration: 0.5
-  SwipeMinHorDistance: 0.5
+  SwipeMinHorDistance: 0.1
 --- !u!1 &396549888305047722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1269,7 +1269,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
   m_AnchoredPosition: {x: 25, y: 0}
-  m_SizeDelta: {x: 150, y: 159}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &4359290581758217670
 CanvasRenderer:
@@ -1757,7 +1757,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -25, y: 0}
-  m_SizeDelta: {x: 150, y: 150}
+  m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &4406277208000871423
 CanvasRenderer:
