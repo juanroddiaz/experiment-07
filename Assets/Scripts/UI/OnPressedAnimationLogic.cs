@@ -28,16 +28,4 @@ public class OnPressedAnimationLogic : MonoBehaviour
         _buttonImage.transform.localScale = _originalScale;
         _buttonImage.color = _originalColor;
     }
-
-    public void OnBounce()
-    {
-        StartCoroutine(OnBounceRoutine());
-    }
-
-    private IEnumerator OnBounceRoutine()
-    {
-
-
-        yield return null;
-    }
 }

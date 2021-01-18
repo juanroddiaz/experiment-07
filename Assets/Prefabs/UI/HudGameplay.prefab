@@ -150,6 +150,7 @@ MonoBehaviour:
   _endLevelMaxPlatformCounter: {fileID: 1890505896100642593}
   _endLevelAnimator: {fileID: 6667294745034685594}
   _endLevelGroup: {fileID: 453784260129777138}
+  _startLevelAnimator: {fileID: 163247435}
   _endTitleText: {fileID: 2787407023266767765}
 --- !u!1 &447634498607687880
 GameObject:
@@ -4353,6 +4354,7 @@ GameObject:
   - component: {fileID: 5801824163238240197}
   - component: {fileID: 4349370457334265356}
   - component: {fileID: 6938774809578272982}
+  - component: {fileID: 163247435}
   m_Layer: 0
   m_Name: StartLevelContent
   m_TagString: Untagged
@@ -4417,6 +4419,25 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &163247435
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6855889577775949257}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 07180a222525a8e428bb54bf619656bf, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6951573682932184568
 GameObject:
   m_ObjectHideFlags: 0

@@ -42,6 +42,8 @@ public class HudGameplayController : MonoBehaviour
     private Animator _endLevelAnimator;
     [SerializeField]
     private CanvasGroup _endLevelGroup;
+    [SerializeField]
+    private Animator _startLevelAnimator;
     [Header("Feedback")]
     [SerializeField]
     private TextMeshProUGUI _endTitleText;
@@ -80,10 +82,13 @@ public class HudGameplayController : MonoBehaviour
     private IEnumerator StartLevelCountdown()
     {
         _startLevelCountdown.text = "3";
+        _startLevelAnimator.SetTrigger("OnLevelStart");
         yield return new WaitForSeconds(1.0f);
         _startLevelCountdown.text = "2";
+        _startLevelAnimator.SetTrigger("OnLevelStart");
         yield return new WaitForSeconds(1.0f);
         _startLevelCountdown.text = "1";
+        _startLevelAnimator.SetTrigger("OnLevelStart");
         yield return new WaitForSeconds(1.0f);
         _startLevelCountdown.text = "GO!";
         yield return new WaitForSeconds(1.0f);
