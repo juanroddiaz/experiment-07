@@ -21,7 +21,7 @@ public class PlatformLayerLogic : MonoBehaviour
         _minimumDifficulty = data.LowerDifficulty;
         _maximumDifficulty = data.UpperDifficulty;
 
-        int amount = 0;
+        int amount = _controller.GetPlatformAmountByDifficulty(_minimumDifficulty);
         List<PlatformConfig> platforms = new List<PlatformConfig>();
         // if different, get a random amount between the two
         if (_minimumDifficulty <= _maximumDifficulty)

@@ -18,6 +18,8 @@ public class CarouselSelectorLogic : MonoBehaviour
     private Image _leftArrowImage;
     [SerializeField]
     private TextMeshProUGUI _bestHeightCounter;
+    [SerializeField]
+    private TextMeshProUGUI _bestPlatformCounter;
     [Header("Custom Thresholds")]
     [SerializeField]
     private float _imageSeparationFactor = 1.0f;
@@ -229,7 +231,8 @@ public class CarouselSelectorLogic : MonoBehaviour
         string levelName = GameController.Instance.GetLevelNameByIdx(CurrentIndex);
         _title.text = levelName;
         var worldData = GameController.Instance.DataLoader.GetLevelMaxData(levelName);
-        _bestHeightCounter.text = "x" + worldData.MaxHeight.ToString();
+        _bestHeightCounter.text = worldData.MaxHeight.ToString();
+        _bestPlatformCounter.text = ": " + worldData.MaxPlatforms.ToString();
         _rightArrowImage.enabled = CurrentIndex != (_images.Count - 1);
         _leftArrowImage.enabled = CurrentIndex != 0;
     }

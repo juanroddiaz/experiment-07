@@ -24,7 +24,7 @@ public class GameDataLoader : MonoBehaviour
         GameData = new List<GameLevelData>();
         foreach (var name in levelNames)
         {
-            if (PlayerPrefs.HasKey(name))
+            if (PlayerPrefs.HasKey(name + "_height"))
             {
                 GameData.Add(new GameLevelData {
                     Name = name,
@@ -52,7 +52,12 @@ public class GameDataLoader : MonoBehaviour
         if (entry == null)
         {
             Debug.Log("No data for level " + levelName);
-            return new GameLevelData();
+            return new GameLevelData
+            {
+                Name = levelName,
+                MaxHeight = 0,
+                MaxPlatforms = 0,
+            };
         }
         return entry;
     }
