@@ -159,11 +159,6 @@ public class CharacterManager : MonoBehaviour
             IsFalling = true;
         }
 
-        if (IsFalling && IsFacingWall)
-        {
-            _speed.y = _wallSlideSpeed;            
-        }
-
         SetAnimations(!IsFacingWall, IsJumping, IsFalling && IsFacingWall, IsFalling);
 
         _mustJump = false;

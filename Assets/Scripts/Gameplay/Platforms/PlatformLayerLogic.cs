@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PlatformLayerLogic : MonoBehaviour
 {
-    private float _halfHorizontalSpace = 1.75f;
-    private float _halfVerticalSpace = 0.4f;
+    private float _halfHorizontalSpace = 0.0f;
+    private float _halfVerticalSpace = 0.0f;
 
     private ScenarioController _controller;
     private Vector2 _platformDistances = Vector2.zero;
@@ -21,7 +21,10 @@ public class PlatformLayerLogic : MonoBehaviour
         _minimumDifficulty = data.LowerDifficulty;
         _maximumDifficulty = data.UpperDifficulty;
 
-        int amount = _controller.GetPlatformAmountByDifficulty(_minimumDifficulty);
+        int amount = Random.Range(4, 6);
+        _halfHorizontalSpace = amount * 0.4f;
+        _halfVerticalSpace = amount * 0.1f;
+
         List<PlatformConfig> platforms = new List<PlatformConfig>();
         // if different, get a random amount between the two
         if (_minimumDifficulty <= _maximumDifficulty)
@@ -31,7 +34,6 @@ public class PlatformLayerLogic : MonoBehaviour
             {
                 PlatformDifficulty difficulty = (_minimumDifficulty + i);
                 Debug.Log("Layer " + index + ": difficulty " + difficulty);
-                amount = Random.Range(_controller.GetPlatformAmountByDifficulty(difficulty), amount);
                 platforms.AddRange(_controller.GetPlatformsByDifficulty(difficulty));
             }
         }
