@@ -87,9 +87,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7a3074865e6f6a4f832c282db3bff0d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SwipeMinDuration: 0.2
+  SwipeMinDuration: 0.1
   SwipeMaxDuration: 0.5
-  SwipeMinHorDistance: 1
+  SwipeMinHorDistance: 0.5
 --- !u!1 &396549888305047722
 GameObject:
   m_ObjectHideFlags: 0
@@ -1090,7 +1090,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52.18982, y: -247.86804}
+  m_AnchoredPosition: {x: 52.189697, y: -247.86804}
   m_SizeDelta: {x: 700, y: 95.73608}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &6726579945205988756
@@ -4406,7 +4406,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.24705882}
   m_RaycastTarget: 1
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -5251,7 +5251,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 52.18982, y: -47.86804}
+  m_AnchoredPosition: {x: 52.189697, y: -47.868042}
   m_SizeDelta: {x: 700, y: 95.73608}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!222 &2108375989698565189
