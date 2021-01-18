@@ -33,7 +33,6 @@ public class PlatformLayerLogic : MonoBehaviour
             for (int i = 0; i <= diff; i++)
             {
                 PlatformDifficulty difficulty = (_minimumDifficulty + i);
-                Debug.Log("Layer " + index + ": difficulty " + difficulty);
                 platforms.AddRange(_controller.GetPlatformsByDifficulty(difficulty));
             }
         }

@@ -26,10 +26,8 @@ public class CharacterManager : MonoBehaviour
     private Rigidbody2D _rigidbody2D;
     private bool _mustJump = false;
     private bool _boostedJump = false;
-    private bool _goingLeft = false;
-    private bool _goingRight = false;
     private bool _moving = false;
-    private Vector2 _speed = Vector2.zero;
+    private bool _moveBySwipe = false;
 
     private ScenarioController _sceneController;
     private static string _groundedAnimKey = "Grounded";
@@ -42,6 +40,7 @@ public class CharacterManager : MonoBehaviour
     public void Initialize(ScenarioController controller)
     {
         _sceneController = controller;
+        _moving = false;
 
         var footData = new TriggerEventData
         {
@@ -84,7 +83,11 @@ public class CharacterManager : MonoBehaviour
         {
             _mustJump = true;
             _boostedJump = boosted;
-            return;
+            if (_moveBySwipe)
+            {
+                _moveBySwipe = false;
+                _moving = false;
+            }
         }
     }
 
@@ -94,6 +97,8 @@ public class CharacterManager : MonoBehaviour
         {
             return;
         }
+
+        _moveBySwipe = true;
 
         if (goingRight)
         {
@@ -107,8 +112,6 @@ public class CharacterManager : MonoBehaviour
     public void OnLeftDown()
     {
         Debug.Log("Pressing left!");
-        _goingLeft = true;
-        _goingRight = false;
         _moving = true;
         transform.right = Vector3.left;
     }
@@ -116,8 +119,6 @@ public class CharacterManager : MonoBehaviour
     public void OnRightDown()
     {
         Debug.Log("Pressing right!");
-        _goingRight = true;
-        _goingLeft = false;
         _moving = true;
         transform.right = Vector3.right;
     }
@@ -125,8 +126,6 @@ public class CharacterManager : MonoBehaviour
     public void OnButtonUp()
     {
         Debug.Log("Button Up");
-        _goingRight = false;
-        _goingLeft = false;
         _moving = false; 
     }
 
