@@ -21,7 +21,7 @@ External Packages (unused assets were deleted):
 
 How to test:
 * In standalone: start from Scenes/MenuScene or Scenes/GameScene. Starting from GameScene will initialize the last scene played.
-* APK: just install "experiment-07.apk" in your Android device, download it from here -> 
+* APK: just install "experiment-07.apk" in your Android device, download it from here -> https://drive.google.com/file/d/1cX4sWSSxibwAs1o389o524QS0uCCnUyh/view?usp=sharing
 
 
 Gameplay requirements:
