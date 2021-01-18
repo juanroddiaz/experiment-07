@@ -192,7 +192,6 @@ public class ScenarioController : MonoBehaviour
     public void FinishLevel()
     {
         GameController.Instance.ToggleCurrentLevelMusic(false);
-        TogglePause(true);
         if (GameController.Instance.DataLoader.TrySaveLevelMaxRecord(new GameLevelData
         {
             Name = _levelData.Name,

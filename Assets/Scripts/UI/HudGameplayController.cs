@@ -38,6 +38,10 @@ public class HudGameplayController : MonoBehaviour
     private TextMeshProUGUI _endLevelMaxHeightCounter;
     [SerializeField]
     private TextMeshProUGUI _endLevelMaxPlatformCounter;
+    [SerializeField]
+    private Animator _endLevelAnimator;
+    [SerializeField]
+    private CanvasGroup _endLevelGroup;
     [Header("Feedback")]
     [SerializeField]
     private TextMeshProUGUI _endTitleText;
@@ -65,6 +69,7 @@ public class HudGameplayController : MonoBehaviour
         _pausePanel.SetActive(false);
         _controlsPanel.SetActive(false);
         _endLevelPanel.SetActive(false);
+        _endLevelGroup.alpha = 0.0f;
         _startLevelPanel.SetActive(true);
         UpdateHeightCounter(0);
         _platformCounterAmount = 0;
@@ -152,6 +157,7 @@ public class HudGameplayController : MonoBehaviour
         _endLevelPlatformCounter.text = " : " + _sceneController.CurrentPlatforms.ToString();
         _endLevelMaxHeightCounter.text = _sceneController.GetMaxHeight().ToString();
         _endLevelMaxPlatformCounter.text = " : " + _sceneController.GetMaxPlatforms().ToString();
+        _endLevelAnimator.SetTrigger("OnLevelEnd");
     }
 
     public void OnReplay()

@@ -73,6 +73,7 @@ public class CharacterManager : MonoBehaviour
     {
         SetAnimations(false, false, false, false);
         _animator.SetBool(_deathAnimKey, true);
+        _rigidbody2D.simulated = false;
         _sceneController.OnDeath();
     }
 
