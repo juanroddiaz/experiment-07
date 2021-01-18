@@ -2,6 +2,8 @@
 using UnityEngine.UI;
 using TMPro;
 using System.Collections.Generic;
+using System.Collections;
+
 public class CarouselSelectorLogic : MonoBehaviour
 {
     [SerializeField]
@@ -20,6 +22,8 @@ public class CarouselSelectorLogic : MonoBehaviour
     private TextMeshProUGUI _bestHeightCounter;
     [SerializeField]
     private TextMeshProUGUI _bestPlatformCounter;
+    [SerializeField]
+    private float _onSelectionAnimTime = 2.0f;
     [Header("Custom Thresholds")]
     [SerializeField]
     private float _imageSeparationFactor = 1.0f;
@@ -39,6 +43,7 @@ public class CarouselSelectorLogic : MonoBehaviour
     private float _screenPositionX;
     private float _lastScreenPositionX;
     private bool _initialized = false;
+    private bool _enabled = false;
 
     /// The index of the current image on display.
     public int CurrentIndex = 0;
@@ -47,6 +52,7 @@ public class CarouselSelectorLogic : MonoBehaviour
     public void Initialize()
     {
         _canSwipe = false;
+        _enabled = true;
         _imageWitdh = _viewWindows.rect.width * _imageSeparationFactor * Screen.height / Screen.width;
         _lerpTimer = 0.0f;
         _lerpPosition = 0.0f;
@@ -112,7 +118,7 @@ public class CarouselSelectorLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!_initialized)
+        if (!_initialized || !_enabled)
         {
             return;
         }
@@ -208,6 +214,11 @@ public class CarouselSelectorLogic : MonoBehaviour
 
     public void GoToIndex(int value)
     {
+        if (!_enabled)
+        {
+            return;
+        }
+
         if(value < 0 || value >= _images.Count)
         {
             Debug.LogError("Invalid index for carousel! " + value.ToString());
@@ -237,10 +248,27 @@ public class CarouselSelectorLogic : MonoBehaviour
         _leftArrowImage.enabled = CurrentIndex != 0;
     }
 
-    public void GoToIndexSmooth(int value)
+    public IEnumerator OnSelectAnimation()
     {
-        CurrentIndex = value;
-        _lerpTimer = 0;
-        _lerpPosition = (_imageWitdh + _imageGap) * CurrentIndex;
+        _enabled = false;
+        _rightArrowImage.enabled = false;
+        _leftArrowImage.enabled = false;
+
+        float countdown = 0.0f;
+        var imgTransform = _images[CurrentIndex];
+        var imgComponent = imgTransform.GetComponent<Image>();
+        var transparentColor = imgComponent.color;
+        transparentColor.a = 0.0f;
+        var targetScale = Vector2.one * 3.0f;
+        while (countdown <= _onSelectionAnimTime)
+        {
+            imgTransform.localScale = Vector3.Lerp(imgTransform.localScale, targetScale, countdown / _onSelectionAnimTime);
+            imgComponent.color = Color.Lerp(imgComponent.color, transparentColor, countdown / _onSelectionAnimTime);
+            countdown += 0.025f;
+            yield return null;
+        }
+
+        imgTransform.localScale = targetScale;
+        imgComponent.color = transparentColor;
     }
 }

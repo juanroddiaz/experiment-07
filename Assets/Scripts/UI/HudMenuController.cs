@@ -13,6 +13,10 @@ public class HudMenuController : MonoBehaviour
     private GameObject _soundOnObj;
     [SerializeField]
     private GameObject _soundOffObj;
+    [SerializeField]
+    private Animator _hudAnimator;
+    [SerializeField]
+    private Image _foreground;
 
     private bool _soundOn = true;
 
@@ -25,6 +29,14 @@ public class HudMenuController : MonoBehaviour
 
     public void OnPlayButtonClick()
     {
+        StartCoroutine(OnPlayRoutine());
+    }
+
+    private IEnumerator OnPlayRoutine()
+    {
+        _playButton.enabled = false;
+        _hudAnimator.SetTrigger("OnPlay");
+        yield return StartCoroutine(_carouselLogic.OnSelectAnimation());
         GameController.Instance.LoadGameplayScenario(_carouselLogic.CurrentIndex);
     }
 
